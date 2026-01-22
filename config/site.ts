@@ -1,5 +1,5 @@
 // Site configuration
-// Update these values with your own contact information and links
+// ⚠️ IMPORTANT: Update these values with your own information before deployment!
 
 export const siteConfig = {
   // Personal Information
@@ -9,12 +9,14 @@ export const siteConfig = {
   description: "Computer Science Engineer with dual Master's degrees in Frontend Design. Transforming ideas into elegant, scalable digital experiences.",
   
   // Contact Information
-  email: "contact@example.com", // Update with your email
+  // ⚠️ TODO: Replace with your actual email address
+  email: "your-email@example.com",
   
   // Social Links
+  // ⚠️ TODO: Replace with your actual profile URLs
   social: {
-    linkedin: "https://linkedin.com", // Update with your LinkedIn profile URL
-    github: "https://github.com", // Update with your GitHub profile URL
+    linkedin: "https://linkedin.com/in/your-profile",
+    github: "https://github.com/your-username",
   },
   
   // SEO
