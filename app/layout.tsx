@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Frontend Consultant | Expert in Design & Development",
-  description: "Computer Science Engineer with Master's degrees in Frontend Design. Specializing in modern web development, UI/UX design, and technical consulting services.",
-  keywords: ["frontend consultant", "web development", "UI/UX design", "React", "TypeScript", "Next.js", "technical consulting"],
-  authors: [{ name: "Frontend Consultant" }],
+  title: siteConfig.seo.title,
+  description: siteConfig.seo.description,
+  keywords: siteConfig.seo.keywords,
+  authors: [{ name: siteConfig.name }],
   openGraph: {
-    title: "Frontend Consultant | Expert in Design & Development",
-    description: "Computer Science Engineer with Master's degrees in Frontend Design. Specializing in modern web development and technical consulting.",
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.description,
     type: "website",
   },
 };

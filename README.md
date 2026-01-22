@@ -76,6 +76,23 @@ This creates an `out/` directory with all static files ready for deployment.
 
 ## 🎨 Customization
 
+### Update Contact Information and Personal Details
+
+**Important**: Edit `/config/site.ts` to customize your personal information:
+
+```typescript
+export const siteConfig = {
+  name: "Your Name",
+  initials: "YN",
+  email: "your.email@example.com",
+  social: {
+    linkedin: "https://linkedin.com/in/yourprofile",
+    github: "https://github.com/yourusername",
+  },
+  // ... more configuration
+};
+```
+
 ### Update Content
 
 Edit `/app/page.tsx` to customize:
@@ -146,10 +163,12 @@ This is a personal landing page project. Feel free to fork and customize for you
 
 ## 📧 Contact
 
-For any questions or consulting inquiries, please reach out via:
-- Email: contact@example.com
-- LinkedIn: [Your Profile]
-- GitHub: [Your Profile]
+**Note**: Update the contact information in `/config/site.ts` with your actual details before deploying.
+
+For customization help or consulting inquiries:
+- Email: Update in config file
+- LinkedIn: Update in config file
+- GitHub: Update in config file
 
 ---
 

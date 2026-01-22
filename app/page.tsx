@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -7,7 +9,7 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="mb-8">
             <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl font-bold">
-              MP
+              {siteConfig.initials}
             </div>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance">
@@ -15,8 +17,7 @@ export default function Home() {
             <span className="gradient-text">Development Consultant</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto text-balance">
-            Computer Science Engineer with dual Master's degrees in Frontend Design.
-            Transforming ideas into elegant, scalable digital experiences.
+            {siteConfig.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -211,17 +212,17 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <a
-              href="mailto:contact@example.com"
+              href={`mailto:${siteConfig.email}`}
               className="card-hover p-6 rounded-xl bg-card-bg border border-gray-800 hover:border-indigo-500"
             >
               <svg className="w-8 h-8 text-indigo-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-sm text-gray-400">contact@example.com</p>
+              <p className="text-sm text-gray-400">{siteConfig.email}</p>
             </a>
             <a
-              href="https://linkedin.com"
+              href={siteConfig.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="card-hover p-6 rounded-xl bg-card-bg border border-gray-800 hover:border-indigo-500"
@@ -233,7 +234,7 @@ export default function Home() {
               <p className="text-sm text-gray-400">Connect with me</p>
             </a>
             <a
-              href="https://github.com"
+              href={siteConfig.social.github}
               target="_blank"
               rel="noopener noreferrer"
               className="card-hover p-6 rounded-xl bg-card-bg border border-gray-800 hover:border-indigo-500"
@@ -251,7 +252,7 @@ export default function Home() {
               Whether you need a technical audit, design consultation, or full development services, I'm here to help.
             </p>
             <a
-              href="mailto:contact@example.com"
+              href={`mailto:${siteConfig.email}`}
               className="inline-block px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-all hover:scale-105"
             >
               Send a Message
@@ -264,7 +265,7 @@ export default function Home() {
       <footer className="py-12 px-6 border-t border-gray-800">
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Frontend Consultant. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <p className="text-gray-500 text-sm mt-2">
             Built with Next.js, TypeScript, and Tailwind CSS
