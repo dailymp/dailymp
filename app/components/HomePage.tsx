@@ -139,7 +139,7 @@ export function HomePage() {
           <p className="text-xl text-gray-400 text-center mb-16 max-w-3xl mx-auto">
             {t("aboutDescription")}
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
               <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -172,6 +172,31 @@ export function HomePage() {
               <p className="text-gray-400">
                 {t("modernStackDesc")}
               </p>
+            </div>
+            <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800 ai-card-special">
+              <style dangerouslySetInnerHTML={{__html: `
+                @keyframes glow-pulse-special {
+                  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 40px rgba(236, 72, 153, 0.2); }
+                  50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.6), 0 0 60px rgba(236, 72, 153, 0.4), 0 0 80px rgba(139, 92, 246, 0.3); }
+                }
+                .ai-card-special:hover {
+                  transform: translateY(-8px) scale(1.02);
+                  border-color: rgba(168, 85, 247, 0.8);
+                  animation: glow-pulse-special 2s ease-in-out infinite;
+                }
+              `}} />
+              <div className="w-12 h-12 rounded-lg bg-violet-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">{t("aiInnovation")}</h3>
+              <p className="text-gray-400 mb-3">
+                {t("aiInnovationDesc")}
+              </p>
+              <a href="/servicios/integracion-ia" className="text-purple-400 hover:text-pink-400 transition-colors underline text-sm font-semibold">
+                → {t("discoverMore")}
+              </a>
             </div>
           </div>
         </div>
@@ -218,6 +243,15 @@ export function HomePage() {
                   {t("aiConsultingGenerative")}
                 </li>
               </ul>
+              <a
+                href="/servicios/integracion-ia"
+                className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50"
+              >
+                <span>{t("discoverMore")}</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
               <h3 className="text-2xl font-bold mb-4">{t("technicalConsulting")}</h3>

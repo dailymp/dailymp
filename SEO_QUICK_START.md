@@ -36,7 +36,7 @@ Tu sitio **YA TIENE** todas las prácticas SEO esenciales para posicionarse en G
 ### 1️⃣ Actualiza `/config/site.ts` (3 min)
 ```typescript
 // Tu dominio real
-url: "https://dailymirandapardo.com"
+url: "https://dailymp.es"
 
 // Tu email
 email: "tu-email@example.com"
@@ -49,7 +49,7 @@ social: {
 
 // Image 1200x630px
 seo: {
-  image: "https://dailymirandapardo.com/og-image.jpg",
+   image: "https://dailymp.es/og-image.jpg",
 }
 ```
 

@@ -5,6 +5,7 @@ export const dynamic = 'force-static';
 export async function GET() {
   const baseUrl = siteConfig.url;
   
+  // Use only valid canonical URLs (avoid fragments like #about in sitemaps)
   const pages = [
     {
       url: baseUrl,
@@ -13,22 +14,10 @@ export async function GET() {
       priority: 1,
     },
     {
-      url: `${baseUrl}#about`,
+      url: `${baseUrl}/servicios/integracion-ia`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}#services`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}#contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.9,
     },
   ];
 

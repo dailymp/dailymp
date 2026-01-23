@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { LanguageProvider } from "@/app/context/LanguageContext";
 import { Header } from "@/app/components/Header";
 import { StructuredData } from "@/app/components/StructuredData";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: siteConfig.seo.title,
@@ -12,6 +19,11 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.seo.author }],
   creator: siteConfig.seo.author,
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   alternates: {
     canonical: siteConfig.url,
   },
@@ -57,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <StructuredData />
       </head>

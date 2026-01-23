@@ -31,19 +31,19 @@ export function Header() {
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
           <a
-            href="#about"
+            href="/#about"
             className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium"
           >
             {t("about")}
           </a>
           <a
-            href="#services"
+            href="/#services"
             className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium"
           >
             {t("services")}
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium"
           >
             {t("contact")}

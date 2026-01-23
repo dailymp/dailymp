@@ -9,5 +9,4 @@ User-agent: Googlebot
 Allow: /
 
 # Sitemap location
-Sitemap: https://dailymirandapardo.com/sitemap.xml
-Sitemap: https://dailymirandapardo.com/sitemap-es.xml
+Sitemap: https://dailymp.es/sitemap.xml

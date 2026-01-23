@@ -7,7 +7,7 @@ export const siteConfig = {
   initials: "DMP",
   title: "Frontend Design & Development Consultant",
   description: "Computer Science Engineer with dual Master's degrees in Frontend Design. Transforming ideas into elegant, scalable digital experiences.",
-  url: "https://dailymirandapardo.com", // Update with your actual domain
+  url: "https://dailymp.es", // Update with your actual domain
   
   // Contact Information
   email: "tech@dailymp.es",
@@ -20,21 +20,26 @@ export const siteConfig = {
   
   // SEO
   seo: {
-    title: "Frontend Design & Development Consultant | DMP",
-    description: "Expert Frontend Consultant specializing in React, TypeScript, and Next.js. I provide technical consulting, UI/UX design, and development services for scalable digital experiences.",
+    title: "Daily Miranda Pardo | Consultora Frontend & IA",
+    description: "Especialista en integrar IA en React/Next.js. Chat inteligente, RAG, streaming LLM, optimización de latencia. Transforma tu app en una experiencia inteligente.",
     keywords: [
+      "consultora integración IA",
+      "frontend IA",
+      "desarrollo web inteligencia artificial",
+      "UX para LLMs",
+      "optimización latencia IA",
+      "React IA",
+      "Next.js IA",
+      "MCPs",
+      "RAG frontend",
+      "streaming LLM",
       "frontend consultant",
       "web development",
       "UI/UX design",
-      "React consultant",
       "TypeScript",
-      "Next.js expert",
       "technical consulting",
-      "design systems",
-      "web design",
-      "frontend architecture"
     ],
     author: "Daily Miranda Pardo",
-    image: "https://dailymirandapardo.com/og-image.jpg", // Update with your actual image
+    image: "https://dailymp.es/og-image.jpg", // 1200x630 OG image in /public
   },
 };
