@@ -8,15 +8,15 @@ export const translations = {
     // Hero Section
     title: "Diseño Frontend &",
     titleHighlight: "Consultora de Desarrollo",
-    description: "Ingeniera en Ciencias de la Computación con Másters duales en Diseño Frontend. Transformando ideas en experiencias digitales elegantes y escalables.",
+    description: "Ingeniera en Ciencias Informáticas con Másters duales en Diseño Frontend. Transformando ideas en experiencias digitales elegantes y escalables.",
     viewServices: "Ver Servicios",
     getInTouch: "Ponte en Contacto",
     
     // About Section
     aboutTitle: "Experiencia &",
-    aboutTitleHighlight: "Calificaciones",
+    aboutTitleHighlight: "Tecnologías",
     aboutDescription: "Combinando excelencia técnica con dominio del diseño para entregar resultados excepcionales",
-    computerScience: "Ciencias de la Computación",
+    computerScience: "Ciencias Informáticas",
     computerScienceDesc: "Título en ingeniería con sólida base en algoritmos, arquitectura de sistemas y desarrollo de software",
     frontendDesign: "Diseño Frontend",
     frontendDesignDesc: "Másters duales especializados en principios modernos de diseño UI/UX y desarrollo centrado en el usuario",
@@ -69,15 +69,15 @@ export const translations = {
     
     // Contact Section
     letWork: "Trabajemos",
-    letWorkHighlight: "Juntas",
-    letWorkDesc: "¿Lista para elevar tu presencia digital? Hablemos sobre cómo puedo ayudarte a hacer realidad tu visión.",
+    letWorkHighlight: "Junt@s",
+    letWorkDesc: "¿List@ para elevar tu presencia digital? Hablemos sobre cómo puedo ayudarte a hacer realidad tu visión.",
     email: "Correo Electrónico",
     linkedin: "LinkedIn",
     connectWithMe: "Conéctate conmigo",
     github: "GitHub",
     viewMyWork: "Ver mi trabajo",
     
-    readyGetStarted: "¿Lista para empezar?",
+    readyGetStarted: "¿List@ para empezar?",
     readyGetStartedDesc: "Ya sea que necesites una auditoría técnica, consultoría de diseño o servicios de desarrollo completo, estoy aquí para ayudarte.",
     sendMessage: "Enviar Mensaje",
     
@@ -100,7 +100,7 @@ export const translations = {
     
     // About Section
     aboutTitle: "Expertise &",
-    aboutTitleHighlight: "Qualifications",
+    aboutTitleHighlight: "Technologies",
     aboutDescription: "Combining technical excellence with design mastery to deliver exceptional results",
     computerScience: "Computer Science",
     computerScienceDesc: "Engineering degree with strong foundation in algorithms, systems architecture, and software development",

@@ -53,18 +53,27 @@ export function HomePage() {
                   </filter>
                 </defs>
                 
-                {/* Outer rotating ring */}
+                {/* Outer rotating ring with code symbols */}
                 <g className="rotating-ring" style={{transformOrigin: '100px 100px'}}>
                   <circle 
                     cx="100" 
                     cy="100" 
-                    r="75" 
+                    r="100" 
                     fill="none" 
                     stroke="url(#iconGradient)" 
-                    strokeWidth="2" 
-                    strokeDasharray="15 10"
+                    strokeWidth="2.5" 
+                    strokeDasharray="20 12"
                     opacity="0.5"
                   />
+                  {/* Code symbols around the ring */}
+                  <text x="100" y="10" fontSize="16" fill="#a855f7" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">{`{}`}</text>
+                  <text x="175" y="38" fontSize="16" fill="#ec4899" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">[ ]</text>
+                  <text x="193" y="105" fontSize="16" fill="#8b5cf6" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">=&gt;</text>
+                  <text x="175" y="176" fontSize="16" fill="#a855f7" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">fn</text>
+                  <text x="100" y="203" fontSize="16" fill="#ec4899" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">&lt;/&gt;</text>
+                  <text x="25" y="176" fontSize="16" fill="#8b5cf6" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">( )</text>
+                  <text x="7" y="105" fontSize="16" fill="#a855f7" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">AI</text>
+                  <text x="25" y="38" fontSize="16" fill="#ec4899" opacity="0.7" textAnchor="middle" fontFamily="monospace" fontWeight="600">TS</text>
                 </g>
                 
                 {/* Central neural network */}
@@ -92,8 +101,8 @@ export function HomePage() {
                 </g>
                 
                 {/* Code brackets */}
-                <text x="40" y="108" fontSize="38" fontWeight="bold" fontFamily="monospace" fill="#a855f7" opacity="0.4">&lt;</text>
-                <text x="148" y="108" fontSize="38" fontWeight="bold" fontFamily="monospace" fill="#ec4899" opacity="0.4">/&gt;</text>
+                <text x="48" y="107" fontSize="38" fontWeight="bold" fontFamily="monospace" fill="#a855f7" opacity="0.4">&lt;</text>
+                <text x="146" y="107" fontSize="38" fontWeight="bold" fontFamily="monospace" fill="#ec4899" opacity="0.4">/&gt;</text>
               </svg>
             </div>
           </div>

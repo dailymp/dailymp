@@ -10,7 +10,7 @@ export const siteConfig = {
   url: "https://dailymirandapardo.com", // Update with your actual domain
   
   // Contact Information
-  email: "dailymp@gmail.com",
+  email: "tech@dailymp.es",
   
   // Social Links
   social: {
