@@ -3,34 +3,38 @@
 
 export const siteConfig = {
   // Personal Information
-  name: "Frontend Consultant",
-  initials: "MP",
+  name: "Daily Miranda Pardo - Frontend Consultant",
+  initials: "DMP",
   title: "Frontend Design & Development Consultant",
   description: "Computer Science Engineer with dual Master's degrees in Frontend Design. Transforming ideas into elegant, scalable digital experiences.",
+  url: "https://dailymirandapardo.com", // Update with your actual domain
   
   // Contact Information
-  // ⚠️ TODO: Replace with your actual email address
-  email: "your-email@example.com",
+  email: "dailymp@gmail.com",
   
   // Social Links
-  // ⚠️ TODO: Replace with your actual profile URLs
   social: {
-    linkedin: "https://linkedin.com/in/your-profile",
-    github: "https://github.com/your-username",
+    linkedin: "https://www.linkedin.com/in/daily-miranda-pardo/",
+    github: "https://github.com/dailymp",
   },
   
   // SEO
   seo: {
-    title: "Frontend Consultant | Expert in Design & Development",
-    description: "Computer Science Engineer with Master's degrees in Frontend Design. Specializing in modern web development, UI/UX design, and technical consulting services.",
+    title: "Frontend Design & Development Consultant | DMP",
+    description: "Expert Frontend Consultant specializing in React, TypeScript, and Next.js. I provide technical consulting, UI/UX design, and development services for scalable digital experiences.",
     keywords: [
       "frontend consultant",
       "web development",
       "UI/UX design",
-      "React",
+      "React consultant",
       "TypeScript",
-      "Next.js",
-      "technical consulting"
+      "Next.js expert",
+      "technical consulting",
+      "design systems",
+      "web design",
+      "frontend architecture"
     ],
+    author: "Daily Miranda Pardo",
+    image: "https://dailymirandapardo.com/og-image.jpg", // Update with your actual image
   },
 };

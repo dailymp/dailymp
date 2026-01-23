@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  compress: true,
+  poweredByHeader: false, // Remove X-Powered-By header
 };
 
 export default nextConfig;
