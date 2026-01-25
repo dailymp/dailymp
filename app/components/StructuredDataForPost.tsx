@@ -19,14 +19,15 @@ export default function StructuredDataForPost({ post, slug }: { post: Post; slug
     headline: post.title,
     description: post.description || siteConfig.seo.description,
     image: [image],
-    author: { "@type": "Person", name: post.author },
+    author: { "@type": "Person", name: post.author, url: siteConfig.social.linkedin },
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
-      logo: { "@type": "ImageObject", url: siteConfig.seo.image },
+      logo: { "@type": "ImageObject", url: siteConfig.seo.image, width: 600, height: 60 },
     },
     datePublished: post.date,
     dateModified: post.updated || post.date,
+    articleSection: post.category || undefined,
     mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
   };
 

@@ -41,5 +41,5 @@ jobs:
           dangerous-clean-slate: true # BORRA lo que no esté en 'out'. ¡Cuidado si tienes otros archivos en el hosting!
           protocol: ftps            # Hostinger requiere FTPS explícito
           port: 21                  # Aseguramos el puerto
-          security: strict
+          security: loose              # Permite conexiones menos estrictas
           timeout: 60000

@@ -41,7 +41,6 @@ export function StructuredData() {
     name: "Daily Miranda Pardo - Consultora Frontend & IA",
     description: siteConfig.seo.description,
     url: siteConfig.url,
-    telephone: null,
     email: siteConfig.email,
     image: siteConfig.seo.image,
     priceRange: "€€",
