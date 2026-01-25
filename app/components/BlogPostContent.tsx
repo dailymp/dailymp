@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 interface BlogPostContentProps {
-  rawContent?: string;
+  source: MDXRemoteSerializeResult;
   title: string;
   date: string;
   author: string;
@@ -72,7 +73,7 @@ const mdxComponents = {
 };
 
 export function BlogPostContent({
-  rawContent,
+  source,
   title,
   date,
   author,
@@ -141,9 +142,9 @@ export function BlogPostContent({
         </div>
       </header>
 
-      {/* Content (rendering raw MDX as text to avoid MDX runtime during prerender) */}
+      {/* Content */}
       <div className="prose prose-invert max-w-none px-6">
-        <pre className="whitespace-pre-wrap">{rawContent}</pre>
+        <MDXRemote {...source} components={mdxComponents} />
       </div>
 
       {/* Footer */}
