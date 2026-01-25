@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
 import BlogPostClientWrapper from "@/app/components/BlogPostClientWrapper";
 import { siteConfig } from "@/config/site";
+import StructuredDataForPost from "@/app/components/StructuredDataForPost";
 
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
@@ -64,6 +65,7 @@ export async function generateMetadata({
         languages: {
           es: `${siteConfig.url}/blog/${slug.replace(/-en$/, '')}/`,
           en: `${siteConfig.url}/blog/${slug.endsWith('-en') ? slug : slug + '-en'}/`,
+          "x-default": `${siteConfig.url}/blog/${slug.replace(/-en$/, '')}/`,
         },
       },
       openGraph: {
@@ -73,6 +75,8 @@ export async function generateMetadata({
         publishedTime: post.date,
         authors: [post.author],
         images: post.image ? [{ url: post.image }] : [],
+        locale: post.lang === "en" || slug.endsWith("-en") ? "en_US" : "es_ES",
+        alternateLocale: post.lang === "en" || slug.endsWith("-en") ? "es_ES" : "en_US",
       },
     };
   } catch (error) {
@@ -123,7 +127,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Client loader will dynamically import the MDX client wrapper (ssr: false)
 
   return (
-    <main className="min-h-screen pt-6 pb-12">
+    <>
+      <StructuredDataForPost post={post} slug={slug} />
+      <main className="min-h-screen pt-6 pb-12">
       {/* Post Content - rendered by client MDX component to avoid duplication */}
       <article className="py-10 px-6">
         <div className="max-w-4xl mx-auto">
@@ -173,5 +179,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </section>
     </main>
+    </>
   );
 }

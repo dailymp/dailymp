@@ -76,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="es" className={inter.variable}>
       <head>
         <StructuredData />
         {/* Google Tag Manager */}

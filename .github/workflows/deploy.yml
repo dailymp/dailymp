@@ -39,3 +39,6 @@ jobs:
           local-dir: ./out/        # Next.js genera los estáticos aquí
           server-dir: ./public_html/ # La raíz de tu web en Hostinger
           dangerous-clean-slate: true # BORRA lo que no esté en 'out'. ¡Cuidado si tienes otros archivos en el hosting!
+          protocol: ftps            # Hostinger requiere FTPS explícito
+          port: 21                  # Aseguramos el puerto
+          security: strict
