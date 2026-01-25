@@ -42,3 +42,4 @@ jobs:
           protocol: ftps            # Hostinger requiere FTPS explícito
           port: 21                  # Aseguramos el puerto
           security: strict
+          timeout: 60000
