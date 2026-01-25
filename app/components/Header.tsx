@@ -43,6 +43,12 @@ export function Header() {
             {t("services")}
           </a>
           <a
+            href="/blog"
+            className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium"
+          >
+            Blog
+          </a>
+          <a
             href="/#contact"
             className="text-gray-300 hover:text-purple-400 transition-colors text-sm font-medium"
           >

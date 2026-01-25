@@ -1,0 +1,192 @@
+---
+title: "Optimización de Rendimiento en React: Core Web Vitals Explained"
+description: "Guía completa para optimizar LCP, FID y CLS en aplicaciones React modernas."
+date: "2026-01-15"
+author: "Daily Miranda Pardo"
+category: "Performance"
+image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop&ixlib=rb-4.0.3"
+lang: "es"
+---
+
+Los Core Web Vitals se han convertido en un factor crucial para SEO y UX. En este artículo aprenderemos cómo optimizar LCP, FID y CLS en aplicaciones React.
+
+## ¿Qué son los Core Web Vitals?
+
+Google mide la experiencia de usuario en tres métricas principales:
+
+| Métrica | Objetivo | Descripción |
+|---------|----------|-------------|
+| **LCP** | < 2.5s | Largest Contentful Paint (pintura del contenido más grande) |
+| **FID** | < 100ms | First Input Delay (respuesta a interacciones) |
+| **CLS** | < 0.1 | Cumulative Layout Shift (cambios de layout inesperados) |
+
+## 1. Optimizar LCP (Largest Contentful Paint)
+
+### Problema típico
+Tu página tarda mucho en mostrar contenido significativo.
+
+### Soluciones
+
+#### a) Image Optimization
+```typescript
+import Image from "next/image";
+
+// ❌ Malo
+<img src="/large-image.jpg" alt="Hero" />
+
+// ✅ Bueno
+<Image
+  src="/large-image.jpg"
+  alt="Hero"
+  priority
+  width={1200}
+  height={600}
+/>
+```
+
+#### b) Code Splitting
+```typescript
+// ❌ Malo - Carga todo el código innecesario
+import HeavyComponent from "./HeavyComponent";
+
+// ✅ Bueno - Carga solo cuando se necesita
+const HeavyComponent = dynamic(() => import("./HeavyComponent"));
+```
+
+#### c) Critical CSS Inlining
+```typescript
+// next.config.ts
+const nextConfig = {
+  compress: true,
+  swcMinify: true,
+};
+```
+
+## 2. Mejorar FID (First Input Delay)
+
+El FID mide cuánto tarda el navegador en responder a las interacciones del usuario.
+
+### Estrategias
+
+#### a) Evitar Long Tasks
+```typescript
+// ❌ Malo - Bloquea el hilo principal
+const processData = (data) => {
+  for (let i = 0; i < data.length; i++) {
+    expensiveCalculation(data[i]);
+  }
+};
+
+// ✅ Bueno - Divide en chunks
+const processDataChunks = async (data) => {
+  for (let i = 0; i < data.length; i += 100) {
+    await new Promise(resolve => setTimeout(resolve, 0));
+    data.slice(i, i + 100).forEach(expensiveCalculation);
+  }
+};
+```
+
+#### b) Web Workers
+```typescript
+// Mueve cálculos pesados a un web worker
+const worker = new Worker("/heavy-calc.worker.js");
+worker.postMessage(largeData);
+worker.onmessage = (e) => {
+  console.log(e.data);
+};
+```
+
+## 3. Reducir CLS (Cumulative Layout Shift)
+
+### Problema
+Los elementos de la página se mueven después de cargarse, causando mala experiencia.
+
+### Soluciones
+
+#### a) Reservar espacio para imágenes
+```typescript
+// ❌ Malo
+<img src="/image.jpg" alt="Hero" />
+
+// ✅ Bueno - Reserva espacio
+<img 
+  src="/image.jpg" 
+  alt="Hero"
+  width={1200}
+  height={600}
+  style={{ width: "100%", height: "auto" }}
+/>
+```
+
+#### b) Evitar fuentes que cambian
+```typescript
+// ❌ Malo - Cambia el tamaño después de cargar
+@import url('https://fonts.googleapis.com/...');
+
+// ✅ Bueno - Preload la fuente
+<link
+  rel="preload"
+  href="/font.woff2"
+  as="font"
+  type="font/woff2"
+  crossOrigin="anonymous"
+/>
+```
+
+#### c) Ads y embeds
+```typescript
+// Siempre especifica dimensiones para ads/embeds
+<div style={{ width: "300px", height: "250px" }}>
+  {/* Contenido del ad */}
+</div>
+```
+
+## Monitoreo en producción
+
+### Web Vitals Library
+```typescript
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+
+getCLS(console.log);
+getFID(console.log);
+getFCP(console.log);
+getLCP(console.log);
+getTTFB(console.log);
+```
+
+### Integration con Google Analytics
+```typescript
+import { getLCP } from 'web-vitals';
+
+getLCP((metric) => {
+  gtag('event', 'page_view', {
+    'lcp_value': metric.value,
+  });
+});
+```
+
+## Checklist de optimización
+
+- [ ] Usar `next/image` para todas las imágenes
+- [ ] Implementar lazy loading donde sea apropiado
+- [ ] Code splitting con `dynamic()` imports
+- [ ] Optimizar fuentes (preload, subset)
+- [ ] Reservar espacio para elementos dinámicos
+- [ ] Monitorear métricas en producción
+- [ ] Lighthouse score > 90
+- [ ] Mobile-first approach
+
+## Resultados típicos
+
+Con estas optimizaciones, típicamente logras:
+- ✅ LCP: 1.2s - 2s
+- ✅ FID: 20ms - 50ms
+- ✅ CLS: 0.05 - 0.1
+
+## Recursos útiles
+
+- [Google PageSpeed Insights](https://pagespeed.web.dev/)
+- [Web Vitals Library](https://github.com/GoogleChrome/web-vitals)
+- [Next.js Performance Optimization](https://nextjs.org/learn/seo/performance)
+
+¿Necesitas optimizar tu aplicación? [Contáctame para una auditoría](/contact).

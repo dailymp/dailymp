@@ -1,0 +1,192 @@
+---
+title: "React Performance Optimization: Core Web Vitals Explained"
+description: "Complete guide to optimize LCP, FID, and CLS in modern React applications."
+date: "2026-01-15"
+author: "Daily Miranda Pardo"
+category: "Performance"
+image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop&ixlib=rb-4.0.3"
+lang: "en"
+---
+
+Core Web Vitals are now critical for SEO and UX. In this post you'll learn how to optimize LCP, FID, and CLS in React apps.
+
+## What are Core Web Vitals?
+
+Google measures user experience through three main metrics:
+
+| Metric | Goal | Description |
+|--------|------|-------------|
+| **LCP** | < 2.5s | Largest Contentful Paint |
+| **FID** | < 100ms | First Input Delay |
+| **CLS** | < 0.1 | Cumulative Layout Shift |
+
+## 1. Optimize LCP (Largest Contentful Paint)
+
+### Typical problem
+Your page takes too long to render meaningful content.
+
+### Solutions
+
+#### a) Image Optimization
+```typescript
+import Image from "next/image";
+
+// ❌ Bad
+<img src="/large-image.jpg" alt="Hero" />
+
+// ✅ Good
+<Image
+  src="/large-image.jpg"
+  alt="Hero"
+  priority
+  width={1200}
+  height={600}
+/>
+```
+
+#### b) Code Splitting
+```typescript
+// ❌ Bad - Loads everything upfront
+import HeavyComponent from "./HeavyComponent";
+
+// ✅ Good - Load on demand
+const HeavyComponent = dynamic(() => import("./HeavyComponent"));
+```
+
+#### c) Critical CSS Inlining
+```typescript
+// next.config.ts
+const nextConfig = {
+  compress: true,
+  swcMinify: true,
+};
+```
+
+## 2. Improve FID (First Input Delay)
+
+FID measures how quickly the browser responds to user interactions.
+
+### Strategies
+
+#### a) Avoid Long Tasks
+```typescript
+// ❌ Bad - Blocks the main thread
+const processData = (data) => {
+  for (let i = 0; i < data.length; i++) {
+    expensiveCalculation(data[i]);
+  }
+};
+
+// ✅ Good - Process in chunks
+const processDataChunks = async (data) => {
+  for (let i = 0; i < data.length; i += 100) {
+    await new Promise(resolve => setTimeout(resolve, 0));
+    data.slice(i, i + 100).forEach(expensiveCalculation);
+  }
+};
+```
+
+#### b) Web Workers
+```typescript
+// Offload heavy calculations to a web worker
+const worker = new Worker("/heavy-calc.worker.js");
+worker.postMessage(largeData);
+worker.onmessage = (e) => {
+  console.log(e.data);
+};
+```
+
+## 3. Reduce CLS (Cumulative Layout Shift)
+
+### Problem
+Elements move after loading, causing a poor experience.
+
+### Solutions
+
+#### a) Reserve space for images
+```typescript
+// ❌ Bad
+<img src="/image.jpg" alt="Hero" />
+
+// ✅ Good - Reserve space
+<img 
+  src="/image.jpg" 
+  alt="Hero"
+  width={1200}
+  height={600}
+  style={{ width: "100%", height: "auto" }}
+/>
+```
+
+#### b) Avoid flash of unstyled fonts
+```typescript
+// ❌ Bad - Font shifts size after load
+@import url('https://fonts.googleapis.com/...');
+
+// ✅ Good - Preload font
+<link
+  rel="preload"
+  href="/font.woff2"
+  as="font"
+  type="font/woff2"
+  crossOrigin="anonymous"
+/>
+```
+
+#### c) Ads and embeds
+```typescript
+// Always reserve dimensions for ads/embeds
+<div style={{ width: "300px", height: "250px" }}>
+  {/* Ad content */}
+</div>
+```
+
+## Production monitoring
+
+### Web Vitals library
+```typescript
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+
+getCLS(console.log);
+getFID(console.log);
+getFCP(console.log);
+getLCP(console.log);
+getTTFB(console.log);
+```
+
+### Google Analytics integration
+```typescript
+import { getLCP } from 'web-vitals';
+
+getLCP((metric) => {
+  gtag('event', 'page_view', {
+    'lcp_value': metric.value,
+  });
+});
+```
+
+## Optimization checklist
+
+- [ ] Use `next/image` for all images
+- [ ] Implement lazy loading where appropriate
+- [ ] Code split with `dynamic()` imports
+- [ ] Optimize fonts (preload, subset)
+- [ ] Reserve space for dynamic elements
+- [ ] Monitor metrics in production
+- [ ] Lighthouse score > 90
+- [ ] Mobile-first approach
+
+## Typical results
+
+With these optimizations you usually achieve:
+- ✅ LCP: 1.2s - 2s
+- ✅ FID: 20ms - 50ms
+- ✅ CLS: 0.05 - 0.1
+
+## Helpful resources
+
+- [Google PageSpeed Insights](https://pagespeed.web.dev/)
+- [Web Vitals Library](https://github.com/GoogleChrome/web-vitals)
+- [Next.js Performance Optimization](https://nextjs.org/learn/seo/performance)
+
+Need to optimize your app? [Contact me for an audit](/contact).

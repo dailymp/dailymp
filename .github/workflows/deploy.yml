@@ -1,0 +1,41 @@
+name: Deploy Next.js SSG to Hostinger
+
+on:
+  push:
+    branches:
+      - main  # Revisa si tu rama se llama 'main' o 'master'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Bajar el código
+      - name: 🚚 Checkout
+        uses: actions/checkout@v4
+
+      # 2. Instalar Node.js (Next.js suele pedir versiones recientes)
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' # Esto hace que las siguientes veces sea más rápido
+
+      # 3. Instalar dependencias
+      - name: 📦 Install Dependencies
+        run: npm ci 
+        # 'npm ci' es más seguro y rápido que 'npm install' para entornos automáticos
+
+      # 4. Construir el proyecto (Genera la carpeta 'out')
+      - name: 🏗️ Build
+        run: npm run build
+
+      # 5. Subir a Hostinger via FTP
+      - name: 🚀 Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/        # Next.js genera los estáticos aquí
+          server-dir: ./public_html/ # La raíz de tu web en Hostinger
+          dangerous-clean-slate: true # BORRA lo que no esté en 'out'. ¡Cuidado si tienes otros archivos en el hosting!

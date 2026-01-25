@@ -1,0 +1,110 @@
+---
+title: "Frontend AI Integration: Best Practices 2026"
+description: "How to integrate large language models into React and Next.js apps efficiently and at scale."
+date: "2026-01-20"
+author: "Daily Miranda Pardo"
+category: "AI Integration"
+image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop"
+lang: "en"
+---
+
+Integrating large language models (LLMs) into frontend apps has transformed how we build user interfaces. In this post we explore the best practices to bring AI into your React and Next.js applications.
+
+## Why integrate AI in the frontend?
+
+Moving AI logic to the browser provides:
+
+- **Lower latency**: Responses arrive faster without server roundtrips
+- **More privacy**: User data does not leave the device
+- **Better UX**: Real-time conversational experiences
+
+## Recommended stack for 2026
+
+### Framework
+- **React 19+** or **Next.js 16+** for maximum performance
+- Server Components for sensitive logic
+- Client Components for real-time interactivity
+
+### LLMs
+```typescript
+import Anthropic from "@anthropic-ai/sdk";
+
+const client = new Anthropic();
+const message = await client.messages.create({
+  model: "claude-3-5-sonnet-20241022",
+  max_tokens: 1024,
+  messages: [
+    { role: "user", content: "Hi, how are you?" }
+  ],
+});
+```
+
+### Streaming responses
+
+One of the biggest UX upgrades is enabling **streaming**:
+
+```typescript
+const response = await client.messages.stream({
+  model: "claude-3-5-sonnet-20241022",
+  max_tokens: 1024,
+  messages: [{ role: "user", content: "Hello" }],
+});
+
+for await (const event of response) {
+  if (event.type === "content_block_delta") {
+    console.log(event.delta.text);
+  }
+}
+```
+
+## Latency optimization
+
+### 1. **Token budgets**
+Do not send the whole context. Calculate how many tokens you really need:
+
+```typescript
+const estimateTokens = (text: string) => {
+  return Math.ceil(text.length / 4); // Rough estimate
+};
+```
+
+### 2. **Context caching**
+Reuse frequent contexts to reduce cost and latency:
+
+```typescript
+const cachedContext = {
+  userProfile: `Name: Daily, AI expert`,
+  systemPrompt: `You are a helpful assistant...`,
+};
+```
+
+### 3. **Parallel requests**
+Process multiple requests simultaneously whenever possible.
+
+## Practical use cases
+
+### Conversational chat
+Replace static forms with natural conversations where the LLM extracts data automatically.
+
+### Generative UI
+The LLM generates dynamic React components based on user context:
+
+```typescript
+const generatedComponent = await generateUI(userContext);
+return <>{generatedComponent}</>;
+```
+
+### RAG (Retrieval-Augmented Generation)
+Combine document search with LLMs for precise answers on your knowledge base.
+
+## Conclusions
+
+AI integration on the frontend is **the natural evolution** of modern web development.
+
+**Key takeaways:**
+- ✅ Use streaming for better UX
+- ✅ Optimize tokens and latency
+- ✅ Consider user privacy
+- ✅ Experiment with new UX patterns
+
+Need help integrating AI into your app? [Contact me](/contact).
