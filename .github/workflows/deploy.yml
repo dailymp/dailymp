@@ -39,7 +39,7 @@ jobs:
           local-dir: ./out/        # Next.js genera los estáticos aquí (ajusta si tu salida es diferente)
           # IMPORTANT: no uses './public_html/' — usa el nombre relativo al FTP root
           # Usar './public_html/' puede crear una carpeta `public_html` dentro de `public_html`.
-          server-dir: /  # La raíz de tu web en Hostinger (relativo al FTP home)
+          server-dir: .  # La raíz de tu web en Hostinger (relativo al FTP home)
           dangerous-clean-slate: true # BORRA lo que no esté en 'out'. ¡Cuidado si tienes otros archivos en el hosting!
           protocol: ftps            # Hostinger requiere FTPS explícito
           port: 21                  # Aseguramos el puerto
