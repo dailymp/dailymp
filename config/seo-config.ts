@@ -78,16 +78,16 @@ export const seoConfig = {
 
   // TODO: Google Analytics
   analytics: {
-    enabled: false,
-    gaId: "G-XXXXXXXXXX", // Replace with your GA ID
-    note: "Agregado en layout.tsx después de obtener tu GA ID",
+    enabled: true,
+    gaId: "G-XXXXXXXXXX", // Replace via NEXT_PUBLIC_GA_ID or siteConfig.integrations.gaId
+    note: "Configura NEXT_PUBLIC_GA_ID o completa siteConfig.integrations.gaId",
   },
 
   // TODO: Google Search Console
   googleSearchConsole: {
-    enabled: false,
-    verificationCode: "", // Replace with your verification code
-    note: "Agrégalo en layout.tsx metadata.verification.google",
+    enabled: true,
+    verificationCode: "", // Replace via NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION or siteConfig.integrations.googleSiteVerification
+    note: "Configura NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION o completa siteConfig.integrations.googleSiteVerification",
   },
 
   // ✅ Mobile & Accessibility
@@ -125,8 +125,8 @@ export const seoChecklist = {
   pending: [
     "⏳ Actualizar site.ts con tu dominio",
     "⏳ Crear og-image.jpg (1200x630px)",
-    "⏳ Google Search Console verification",
-    "⏳ Google Analytics integration",
+    "⏳ Google Search Console verification (agrega código)",
+    "⏳ Google Analytics integration (agrega GA ID)",
     "⏳ Link building strategy",
     "⏳ Content marketing (blog optional)",
   ],

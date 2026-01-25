@@ -42,4 +42,10 @@ export const siteConfig = {
     author: "Daily Miranda Pardo",
     image: "https://dailymp.es/og-image.jpg", // 1200x630 OG image in /public
   },
+
+  // Integrations (preferably use env vars: NEXT_PUBLIC_GTM_ID, NEXT_PUBLIC_GA_ID, NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION)
+  integrations: {
+    gaId: "", // Google Analytics 4 measurement ID (use NEXT_PUBLIC_GA_ID env var)
+    googleSiteVerification: "", // Google Search Console verification code (use NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION env var)
+  },
 };

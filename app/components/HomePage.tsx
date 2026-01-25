@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/app/context/LanguageContext";
 import { siteConfig } from "@/config/site";
+import { Testimonials } from "./Testimonials";
 
 export function HomePage() {
   const { t } = useLanguage();
@@ -386,6 +387,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      <Testimonials />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 border-t border-gray-800">

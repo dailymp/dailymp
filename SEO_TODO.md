@@ -37,17 +37,17 @@
 ## ⏳ REQUIERE ACCIÓN (15%)
 
 ### Tier 4: CONFIGURACIÓN PERSONAL
-- [ ] Update site.ts with your domain
-- [ ] Update site.ts with your email
-- [ ] Update site.ts with your social links
-- [ ] Create og-image.jpg (1200x630px)
-- [ ] Upload og-image.jpg to /public/
+- [x] Update site.ts with your domain
+- [x] Update site.ts with your email
+- [x] Update site.ts with your social links
+- [x] Create og-image.jpg (1200x630px)
+- [x] Upload og-image.jpg to /public/
 
 ### Tier 5: GOOGLE INTEGRATION
 - [ ] Google Search Console verification
 - [ ] Google Search Console sitemap submission
-- [ ] Google Analytics 4 setup
-- [ ] Google Analytics tracking ID integration
+- [ ] Google Analytics 4 setup (add GA ID)
+- [ ] Google Analytics tracking ID integration (NEXT_PUBLIC_GA_ID or siteConfig.integrations.gaId)
 - [ ] Domain verification code (if using)
 
 ---

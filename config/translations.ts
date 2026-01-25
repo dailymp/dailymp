@@ -118,6 +118,12 @@ export const translations = {
     aiIntegrationRequestConsultancy: "Solicitar Consultoría",
     aiIntegrationViewOtherServices: "Ver Otros Servicios",
     
+    // Testimonials Section
+    testimonialsTitle: "Lo que dicen",
+    testimonialsTitleHighlight: "sobre mí",
+    testimonialsDescription: "Recomendaciones de profesionales con los que he trabajado a lo largo de mi carrera",
+    scrollForMore: "Desliza para ver más recomendaciones",
+    
     // Contact Section
     letWork: "Trabajemos",
     letWorkHighlight: "Junt@s",
@@ -254,6 +260,12 @@ export const translations = {
     aiIntegrationReadyDesc: "Integrating AI into your application is more accessible than you think. Let's start with a free consultancy.",
     aiIntegrationRequestConsultancy: "Request Consultancy",
     aiIntegrationViewOtherServices: "View Other Services",
+    
+    // Testimonials Section
+    testimonialsTitle: "What people say",
+    testimonialsTitleHighlight: "about me",
+    testimonialsDescription: "Recommendations from professionals I've worked with throughout my career",
+    scrollForMore: "Scroll to see more recommendations",
     
     // Contact Section
     letWork: "Let's Work",

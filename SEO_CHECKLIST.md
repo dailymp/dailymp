@@ -62,6 +62,7 @@ seo: {
 2. Agrega tu sitio
 3. Verifica la propiedad
 4. Sube el sitemap en Search Console
+5. Guarda el código en la env `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` (o en `siteConfig.integrations.googleSiteVerification`)
 
 ### 3. **Google Analytics 4**
 Agrega esta línea al `layout.tsx`:
@@ -70,6 +71,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 // En el body:
 <GoogleAnalytics gaId="G-XXXXXXXXXX" />
 ```
+Usa la env `NEXT_PUBLIC_GA_ID` o completa `siteConfig.integrations.gaId`.
 
 ### 4. **Verificación de Dominio**
 En `layout.tsx`, actualiza el metadata verification:

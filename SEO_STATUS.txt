@@ -67,6 +67,7 @@
       • Add your email
       • Add your social links
       • Add OG image URL
+      • (Optional) Fill integrations.gaId and integrations.googleSiteVerification if not using env vars
 
   2️⃣  Create og-image.jpg
       • Size: 1200 x 630 pixels
@@ -81,6 +82,7 @@
       • Verify your domain
       • Submit sitemap
       • Request indexing
+      • You can set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION to inject the code
 
 ═══════════════════════════════════════════════════════════════════
 
