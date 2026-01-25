@@ -1,11 +1,14 @@
 import { Metadata } from "next";
-import { serialize } from "next-mdx-remote/serialize";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
-import BlogPostClientWrapper from "@/app/components/BlogPostClientWrapper";
 import { siteConfig } from "@/config/site";
+
+import { unified } from "unified";
+import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
 
 interface BlogPostPageProps {
   params: {
@@ -15,7 +18,7 @@ interface BlogPostPageProps {
 
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
-  // Generate params for all language variants
+  // Generate params for all language variants (include '-en')
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -31,20 +34,22 @@ export async function generateMetadata({
     
     // Try to get the post with the slug as-is
     try {
-      post = getBlogPost(slug);
-      language = post.lang || "es";
-    } catch (error) {
-      // If not found, try with language suffix
-      if (!slug.endsWith("-en")) {
-        try {
+      // Try the slug as provided
+      try {
+        post = getBlogPost(slug);
+        language = post.lang || (slug.endsWith("-en") ? "en" : "es");
+      } catch (e) {
+        // If not found, try the opposite-language variant
+        if (slug.endsWith("-en")) {
+          post = getBlogPost(slug.replace(/-en$/, ""));
+          language = post.lang || "es";
+        } else {
           post = getBlogPost(`${slug}-en`);
-          language = "en";
-        } catch {
-          throw error;
+          language = post.lang || "en";
         }
-      } else {
-        throw error;
       }
+    } catch (error) {
+      return { title: "Post Not Found" };
     }
     
     return {
@@ -77,44 +82,48 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   let post;
   const { slug } = await params;
 
+  // Resolve post for given slug, trying both language variants if necessary
   try {
-    post = getBlogPost(slug);
-  } catch (error) {
-    // Try with language suffix if main slug not found
-    if (!slug.endsWith("-en")) {
-      try {
+    try {
+      post = getBlogPost(slug);
+    } catch (e) {
+      if (slug.endsWith("-en")) {
+        post = getBlogPost(slug.replace(/-en$/, ""));
+      } else {
         post = getBlogPost(`${slug}-en`);
-      } catch {
-        notFound();
       }
-    } else {
-      notFound();
     }
+  } catch (e) {
+    notFound();
   }
 
-  const mdxSource = await serialize(post.content, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-    },
-  });
+  // Compile MDX/Markdown to HTML on the server for SEO-safe prerender
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .process(post.content);
+  const htmlContent = String(file);
 
   const allPosts = getAllBlogPosts();
-  const validSlugs = allPosts.map(p => p.slug);
+  const validSlugs = allPosts.map((p) => p.slug);
 
   return (
     <main className="min-h-screen pt-6 pb-12">
       {/* Post Content */}
       <article className="py-10 px-6">
-        <BlogPostClientWrapper
-          source={mdxSource}
-          title={post.title}
-          date={post.date}
-          author={post.author}
-          category={post.category}
-          readingTime={post.readingTime}
-          image={post.image}
-          validSlugs={validSlugs}
-        />
+        <div className="max-w-4xl mx-auto">
+          <header className="mb-6 md:mb-8 px-6 pt-1">
+            {post.image && (
+              <img src={post.image} alt={post.title} className="w-full h-96 object-cover rounded-xl mb-8" />
+            )}
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">{post.title}</h1>
+          </header>
+          <div className="prose prose-invert max-w-none px-6">
+            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+          </div>
+        </div>
       </article>
 
       {/* Related Posts */}

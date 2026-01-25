@@ -1,9 +1,8 @@
 "use client";
 import { BlogPostContent } from "./BlogPostContent";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface BlogPostClientWrapperProps {
-  source: MDXRemoteSerializeResult;
+  rawContent?: string;
   title: string;
   date: string;
   author: string;

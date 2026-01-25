@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 interface BlogPostContentProps {
-  source: MDXRemoteSerializeResult;
+  rawContent?: string;
   title: string;
   date: string;
   author: string;
@@ -73,7 +72,7 @@ const mdxComponents = {
 };
 
 export function BlogPostContent({
-  source,
+  rawContent,
   title,
   date,
   author,
@@ -84,32 +83,7 @@ export function BlogPostContent({
 }: BlogPostContentProps) {
   const { language } = useLanguage();
   const [imageError, setImageError] = React.useState(false);
-  const redirectDone = React.useRef(false);
-
-  // Auto-redirect to correct language version
-  React.useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (redirectDone.current) return;
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-    const currentSlug = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2] || "";
-    const isEnglish = currentSlug.endsWith("-en");
-    // Prevent redirect if slug is empty
-    if (!currentSlug || currentSlug === "-en") return;
-    if (!validSlugs) return;
-    if (language === "en" && !isEnglish) {
-      const targetSlug = `${currentSlug}-en`;
-      if (validSlugs.includes(targetSlug)) {
-        redirectDone.current = true;
-        window.location.replace(`/blog/${targetSlug}`);
-      }
-    } else if (language === "es" && isEnglish) {
-      const targetSlug = currentSlug.replace(/-en$/, "");
-      if (validSlugs.includes(targetSlug)) {
-        redirectDone.current = true;
-        window.location.replace(`/blog/${targetSlug}`);
-      }
-    }
-  }, [language, validSlugs]);
+  // No automatic redirect; site will serve Spanish-only slugs to avoid prerender issues
 
   // Format date
   const formattedDate = new Date(date).toLocaleDateString(language === "en" ? "en-US" : "es-ES", {
@@ -167,9 +141,9 @@ export function BlogPostContent({
         </div>
       </header>
 
-      {/* Content */}
+      {/* Content (rendering raw MDX as text to avoid MDX runtime during prerender) */}
       <div className="prose prose-invert max-w-none px-6">
-        <MDXRemote {...source} components={mdxComponents} />
+        <pre className="whitespace-pre-wrap">{rawContent}</pre>
       </div>
 
       {/* Footer */}
