@@ -6,6 +6,19 @@ import { Testimonials } from "./Testimonials";
 
 export function HomePage() {
   const { t } = useLanguage();
+  const bugShieldSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: t("bugShieldTitle"),
+    description: t("bugShieldDesc"),
+    provider: {
+      "@type": "Person",
+      name: siteConfig.seo.author,
+      url: siteConfig.url,
+    },
+    url: `${siteConfig.url}/#services`,
+    sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
+  };
 
   return (
     <main className="min-h-screen">
@@ -134,6 +147,7 @@ export function HomePage() {
       {/* About/Expertise Section */}
       <section id="about" className="py-20 px-6 border-t border-gray-800">
         <div className="max-w-5xl mx-auto">
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bugShieldSchema) }} />
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
             {t("aboutTitle")} <span className="gradient-text">{t("aboutTitleHighlight")}</span>
           </h2>
@@ -383,6 +397,39 @@ export function HomePage() {
                   {t("responsiveDesign")}
                 </li>
               </ul>
+            </div>
+            <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <h3 className="text-2xl font-bold mb-4">{t("bugShieldTitle")}</h3>
+              <p className="text-gray-400 mb-4">{t("bugShieldDesc")}</p>
+              <ul className="space-y-3 mb-4">
+                <li className="flex items-center text-gray-300">
+                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {t("bugShieldPoint1")}
+                </li>
+                <li className="flex items-center text-gray-300">
+                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {t("bugShieldPoint2")}
+                </li>
+                <li className="flex items-center text-gray-300">
+                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {t("bugShieldPoint3")}
+                </li>
+              </ul>
+              <a
+                href="/servicios/bug-shield"
+                className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50"
+              >
+                <span>{t("discoverMore")}</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

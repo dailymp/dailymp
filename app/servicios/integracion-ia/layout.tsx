@@ -35,6 +35,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: `${siteConfig.url}/servicios/integracion-ia`,
+    languages: {
+      "es": `${siteConfig.url}/servicios/integracion-ia`,
+      "en": `${siteConfig.url}/en/servicios/integracion-ia`,
+    },
   },
 };
 

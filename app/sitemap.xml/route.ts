@@ -20,6 +20,18 @@ export async function GET() {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/servicios/bug-shield`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/servicios/bug-shield`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ];
 
   // Blog posts (includes language variants like '-en')
@@ -62,6 +74,19 @@ export async function GET() {
         const hreflangLinks = buildHreflangLinks(baseSlug);
 
         return `  <url>\n    <loc>${page.url}</loc>\n    ${hreflangLinks}\n    <lastmod>${page.lastModified.toISOString()}</lastmod>\n    <changefreq>${page.changeFrequency}</changefreq>\n    <priority>${page.priority}</priority>\n  </url>`;
+      }
+
+      // If this page is a service page, add hreflang alternates for ES/EN
+      if (page.url.includes(`${baseUrl}/servicios/`) || page.url.includes(`${baseUrl}/en/servicios/`)) {
+        const isEn = page.url.includes(`${baseUrl}/en/servicios/`);
+        const esUrl = isEn ? page.url.replace(`${baseUrl}/en`, baseUrl) : page.url;
+        const enUrl = isEn ? page.url : page.url.replace(`${baseUrl}`, `${baseUrl}/en`);
+
+        const hreflang = `    <xhtml:link rel="alternate" hreflang="es" href="${esUrl}" />\n` +
+          `    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}" />\n` +
+          `    <xhtml:link rel="alternate" hreflang="x-default" href="${esUrl}" />`;
+
+        return `  <url>\n    <loc>${page.url}</loc>\n    ${hreflang}\n    <lastmod>${page.lastModified.toISOString()}</lastmod>\n    <changefreq>${page.changeFrequency}</changefreq>\n    <priority>${page.priority}</priority>\n  </url>`;
       }
 
       return `  <url>\n    <loc>${page.url}</loc>\n    <lastmod>${page.lastModified.toISOString()}</lastmod>\n    <changefreq>${page.changeFrequency}</changefreq>\n    <priority>${page.priority}</priority>\n  </url>`;
