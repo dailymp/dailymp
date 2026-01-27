@@ -21,6 +21,12 @@ export async function GET() {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/en/servicios/integracion-ia`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/servicios/bug-shield`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
