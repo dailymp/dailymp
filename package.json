@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "check:urls": "node ./scripts/check-urls.js",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
     "start": "next start",
     "lint": "next lint"
   },
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "@playwright/test": "^1.42.0",
     "@types/node": "^25.0.10",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",

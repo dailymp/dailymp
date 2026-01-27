@@ -22,9 +22,10 @@ export function Header() {
     let targetPath = pathname;
 
     // Blog post pages: map slug <-> slug-en without using /en prefix
-    const blogPostMatch = pathname.match(/^\/(?:en\/)?blog\/(?<slug>[^/]+)(?<rest>.*)$/);
-    if (blogPostMatch && blogPostMatch.groups) {
-      const { slug, rest } = blogPostMatch.groups as { slug: string; rest: string };
+    const blogPostMatch = pathname.match(/^\/(?:en\/)?blog\/([^/]+)(.*)$/);
+    if (blogPostMatch) {
+      const slug = blogPostMatch[1] || "";
+      const rest = blogPostMatch[2] || "";
       if (target === "en") {
         targetPath = `/blog/${slug.endsWith("-en") ? slug : `${slug}-en`}${rest || ""}`;
       } else {
