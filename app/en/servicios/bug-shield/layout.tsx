@@ -40,5 +40,37 @@ export const metadata: Metadata = {
 };
 
 export default function ServiciosLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Bug Shield Consulting",
+    description: "Design of e2e coverage with Cypress and Playwright. CI/CD integration and maintenance of test suites.",
+    url: `${siteConfig.url}/en/servicios/bug-shield`,
+    serviceType: "E2E Test Coverage & Automation",
+    provider: {
+      "@type": "Person",
+      name: siteConfig.seo.author,
+      url: siteConfig.url,
+      email: siteConfig.email,
+    },
+    areaServed: "Worldwide",
+  };
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${siteConfig.url}/#services` },
+      { "@type": "ListItem", position: 3, name: "Bug Shield Consulting", item: `${siteConfig.url}/en/servicios/bug-shield` },
+    ],
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      {children}
+    </>
+  );
 }

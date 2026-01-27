@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { BlogPostMetadata } from "@/lib/blog";
 
@@ -13,6 +13,17 @@ interface BlogGridProps {
 export function BlogGrid({ posts, categories }: BlogGridProps) {
   const { language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // Initialize selected category from URL param `?category=...`
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get("category");
+      if (cat) setSelectedCategory(decodeURIComponent(cat));
+    } catch (e) {
+      // ignore server-side or unavailable window
+    }
+  }, []);
 
   // Filter posts by language
   const languagePosts = posts.filter((post) => {
@@ -30,7 +41,14 @@ export function BlogGrid({ posts, categories }: BlogGridProps) {
       <div className="mb-12">
         <div className="flex flex-wrap gap-3">
           <button
-            onClick={() => setSelectedCategory(null)}
+            onClick={() => {
+              setSelectedCategory(null);
+              try {
+                const url = new URL(window.location.href);
+                url.searchParams.delete("category");
+                window.history.replaceState({}, "", url.toString());
+              } catch (e) {}
+            }}
             className={`px-6 py-2 rounded-full font-semibold transition-all ${
               selectedCategory === null
                 ? "bg-purple-600 text-white"
@@ -42,7 +60,14 @@ export function BlogGrid({ posts, categories }: BlogGridProps) {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                try {
+                  const url = new URL(window.location.href);
+                  url.searchParams.set("category", encodeURIComponent(category));
+                  window.history.replaceState({}, "", url.toString());
+                } catch (e) {}
+              }}
               className={`px-6 py-2 rounded-full font-semibold transition-all ${
                 selectedCategory === category
                   ? "bg-purple-600 text-white"

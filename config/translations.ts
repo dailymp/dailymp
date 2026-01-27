@@ -76,6 +76,21 @@ export const translations = {
     bugShieldContactTitle: "¿Listo para mejorar la confianza de tu suite de pruebas?",
     bugShieldContactDesc: "Solicita una consultoría y revisamos tu estrategia de pruebas e2e.",
     bugShieldContactCTA: "Solicitar Consultoría",
+    // Visual stats
+    bugShieldStat1Value: "120+",
+    bugShieldStat1Label: "Sprints con cobertura crítica",
+    bugShieldStat2Value: "99.5%",
+    bugShieldStat2Label: "Reducción promedio de flakiness",
+    bugShieldStat3Value: "50%",
+    bugShieldStat3Label: "Reducción de tiempo en pipelines",
+
+    // AI in SQA
+    bugShieldAiTitle: "IA en SQA",
+    bugShieldAiDesc: "La Inteligencia Artificial potencia la calidad: generación de tests, priorización, detección de flakiness y análisis visual avanzado.",
+    bugShieldAiPoint1: "Generación asistida de pruebas desde especificaciones y logs",
+    bugShieldAiPoint2: "Priorización inteligente de pruebas según cambios de código",
+    bugShieldAiPoint3: "Detección de flakiness y análisis de estabilidad",
+    bugShieldAiPoint4: "Regresión visual con ML y reducción de falsos positivos",
 
     // New Service Cards
     aiTraining: "Formación en Desarrollo IA",
@@ -241,6 +256,21 @@ export const translations = {
     bugShieldContactTitle: "Ready to improve your test suite confidence?",
     bugShieldContactDesc: "Request a consultancy and we'll review your e2e testing strategy.",
     bugShieldContactCTA: "Request Consultancy",
+    // Visual stats
+    bugShieldStat1Value: "120+",
+    bugShieldStat1Label: "Sprints with critical coverage",
+    bugShieldStat2Value: "99.5%",
+    bugShieldStat2Label: "Average flakiness reduction",
+    bugShieldStat3Value: "50%",
+    bugShieldStat3Label: "Pipeline time reduction",
+
+    // AI in SQA
+    bugShieldAiTitle: "AI in SQA",
+    bugShieldAiDesc: "Artificial Intelligence boosts quality: test generation, prioritization, flakiness detection and advanced visual analysis.",
+    bugShieldAiPoint1: "Assisted test generation from specs and logs",
+    bugShieldAiPoint2: "Intelligent test prioritization based on code changes",
+    bugShieldAiPoint3: "Flakiness detection and stability analysis",
+    bugShieldAiPoint4: "ML-based visual regression and false-positive reduction",
 
     // New Service Cards
     aiTraining: "AI Engineering Training",

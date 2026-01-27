@@ -1,0 +1,69 @@
+---
+title: "SQA & AI Updates for 2026: What to Expect"
+description: "Overview of 2026 trends in SQA and how AI is transforming e2e testing, prioritization and visual regression."
+date: "2026-01-27"
+author: "Daily Miranda Pardo"
+category: "SQA & AI"
+image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=1200&h=600&fit=crop"
+keywords: ["SQA","AI","e2e","cypress","playwright","testing"]
+lang: "en"
+---
+
+The intersection of SQA (Software Quality Assurance) and Artificial Intelligence is evolving fast. In 2026 we see clear patterns: smarter automation, ML-driven flakiness reduction, and CI/CD pipelines that integrate AI to prioritize and generate tests.
+
+## Key trends for 2026
+
+### 1. AI-powered test generation
+Tools already generate test cases from specifications, logs and session recordings. By 2026 this will be standard in QA workflows:
+
+- Automatic translation of requirements into e2e scenarios.
+- Extraction of reproducible steps from logs and video.
+
+Conceptual example (pseudocode):
+
+```ts
+const spec = `User logs in, adds a product and pays with card.`;
+const tests = await ai.generateE2EScenarios({ spec });
+await runner.run(tests);
+```
+
+### 2. Intelligent test prioritization
+AI prioritizes tests based on code changes, risk metrics and flakiness history. This reduces cost and speeds up feedback loops.
+
+### 3. ML-driven flakiness detection & mitigation
+Models analyze historical results, timings and DOM patterns to detect fragile tests and suggest mitigations like smarter waits or alternative flows.
+
+### 4. ML-based visual regression
+Not just pixel diffs: models understand visual semantics and reduce false positives (e.g., small image differences that don’t affect UX).
+
+### 5. Autonomous testing agents
+Bots that run suites, retrain heuristics, and open tickets automatically when they detect complex regressions.
+
+## Recommended tools & patterns
+
+- e2e frameworks: **Cypress**, **Playwright** (both provide session recording and replay integrations).
+- AI services: LLM/multimodal APIs for generation and analysis (privacy and data control are essential).
+- CI/CD: run pipelines in stages — smoke -> AI-prioritized -> nightly full runs.
+
+### Best practices
+
+- Keep tests idempotent and isolated.
+- Add metadata per test (feature, risk, owner).
+- Ensure traceability: link failures to commits and artifacts (videos, logs, screenshots).
+- Define token budgets when using LLMs in pipelines to control costs.
+
+## Metrics to monitor
+
+- Flakiness rate per suite
+- Mean time to detect (MTTD)
+- Mean time to resolve (MTTR)
+- Pipeline time reduction
+- Percentage of AI-generated tests accepted without edits
+
+## Organizational impact
+
+Adopting AI in SQA brings faster cycles and a real shift-left, but requires governance: privacy policies, human review, and cost control.
+
+## Conclusion
+
+2026 will be the year AI becomes infrastructure for QA rather than an experimental accelerator. Teams that combine SQA discipline with AI tools will ship faster and with higher confidence.

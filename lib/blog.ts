@@ -15,6 +15,7 @@ export interface BlogPost {
   readingTime: string;
   content: string;
   lang?: string;
+  keywords?: string[];
 }
 
 export interface BlogPostMetadata {
@@ -27,6 +28,7 @@ export interface BlogPostMetadata {
   image?: string;
   readingTime: string;
   lang?: string;
+  keywords?: string[];
 }
 
 /**
@@ -55,6 +57,7 @@ export function getAllBlogPosts(): BlogPostMetadata[] {
       image: data.image,
       readingTime: `${readingTime} min read`,
       lang: data.lang || "es",
+      keywords: Array.isArray(data.keywords) ? data.keywords : (data.keywords ? [String(data.keywords)] : []),
     };
   });
 
@@ -90,6 +93,7 @@ export function getBlogPost(slug: string): BlogPost {
     readingTime: `${readingTime} min read`,
     content,
     lang: data.lang || "es",
+    keywords: Array.isArray(data.keywords) ? data.keywords : (data.keywords ? [String(data.keywords)] : []),
   };
 }
 

@@ -60,6 +60,7 @@ export async function generateMetadata({
     return {
       title: `${post.title} | ${siteConfig.name}`,
       description: post.description,
+      keywords: post.image ? [post.category, ...(post.keywords || [])] : (post.keywords || [post.category]),
       alternates: {
         canonical: `${siteConfig.url}/blog/${slug}/`,
         languages: {

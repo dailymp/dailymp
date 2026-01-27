@@ -3,47 +3,11 @@
 import { siteConfig } from "@/config/site";
 import { useLanguage } from "@/app/context/LanguageContext";
 
-function StructuredDataBugShieldEn() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Bug Shield Consulting",
-    description: "Design of e2e coverage using Cypress and Playwright. CI/CD integration and maintenance of test suites.",
-    url: `${siteConfig.url}/en/servicios/bug-shield`,
-    serviceType: "E2E Test Coverage & Automation",
-    provider: {
-      "@type": "Person",
-      name: siteConfig.seo.author,
-      url: siteConfig.url,
-      email: siteConfig.email,
-    },
-    areaServed: "Worldwide",
-  };
-
-  const breadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${siteConfig.url}/#services` },
-      { "@type": "ListItem", position: 3, name: "Bug Shield Consulting", item: `${siteConfig.url}/en/servicios/bug-shield` },
-    ],
-  };
-
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-    </>
-  );
-}
-
 export default function BugShieldPageEn() {
   const { t } = useLanguage();
 
   return (
     <main className="min-h-screen">
-      <StructuredDataBugShieldEn />
 
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-2 text-sm text-gray-400">
         <a href="/en/" className="hover:text-purple-400 transition-colors">Home</a>
@@ -63,7 +27,25 @@ export default function BugShieldPageEn() {
             <a href="#contact" className="px-8 py-4 border border-gray-700 hover:border-purple-500 text-white rounded-lg font-semibold transition-all hover:scale-105">{t("getInTouch")}</a>
           </div>
         </div>
-      </section>
+
+        {/* Visual stats strip */}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full px-6">
+          <div className="max-w-5xl mx-auto grid grid-cols-3 gap-4 bg-gradient-to-r from-purple-800/10 via-pink-800/10 to-purple-800/10 p-1 rounded-2xl backdrop-blur-sm">
+            <div className="bg-card-bg p-6 rounded-xl text-center border border-gray-800 shadow-sm">
+              <div className="text-3xl font-bold text-white gradient-text mb-2">{t("bugShieldStat1Value")}</div>
+              <div className="text-sm text-gray-300">{t("bugShieldStat1Label")}</div>
+            </div>
+            <div className="bg-card-bg p-6 rounded-xl text-center border border-gray-800 shadow-sm">
+              <div className="text-3xl font-bold text-white gradient-text mb-2">{t("bugShieldStat2Value")}</div>
+              <div className="text-sm text-gray-300">{t("bugShieldStat2Label")}</div>
+            </div>
+            <div className="bg-card-bg p-6 rounded-xl text-center border border-gray-800 shadow-sm">
+              <div className="text-3xl font-bold text-white gradient-text mb-2">{t("bugShieldStat3Value")}</div>
+              <div className="text-sm text-gray-300">{t("bugShieldStat3Label")}</div>
+            </div>
+          </div>
+          </div>
+        </section>
 
       {/* Reuse content text keys (they will render in English via translations.ts) */}
       <section className="py-20 px-6 border-t border-gray-800">
@@ -84,6 +66,48 @@ export default function BugShieldPageEn() {
               <h3 className="font-semibold mb-2">{t("bugShieldMaintenanceTitle")}</h3>
               <p className="text-gray-400">{t("bugShieldMaintenanceDesc")}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI in SQA Section */}
+      <section className="py-20 px-6 border-t border-gray-800">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4">{t("bugShieldAiTitle")}</h2>
+          <p className="text-gray-400 mb-6">{t("bugShieldAiDesc")}</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-md bg-purple-700/20 flex items-center justify-center text-purple-300">AI</div>
+                <div>
+                  <div className="font-semibold">{t("bugShieldAiPoint1")}</div>
+                  <div className="text-gray-400 text-sm">{t("bugShieldAiPoint1")}</div>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-md bg-pink-700/20 flex items-center justify-center text-pink-300">PR</div>
+                <div>
+                  <div className="font-semibold">{t("bugShieldAiPoint2")}</div>
+                  <div className="text-gray-400 text-sm">{t("bugShieldAiPoint2")}</div>
+                </div>
+              </li>
+            </ul>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-md bg-cyan-700/20 flex items-center justify-center text-cyan-300">FL</div>
+                <div>
+                  <div className="font-semibold">{t("bugShieldAiPoint3")}</div>
+                  <div className="text-gray-400 text-sm">{t("bugShieldAiPoint3")}</div>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-md bg-emerald-700/20 flex items-center justify-center text-emerald-300">VR</div>
+                <div>
+                  <div className="font-semibold">{t("bugShieldAiPoint4")}</div>
+                  <div className="text-gray-400 text-sm">{t("bugShieldAiPoint4")}</div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
