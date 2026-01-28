@@ -3,7 +3,6 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "AI Driven Development | Backend & CI/CD Solutions",
-  description: "Desarrollo backend impulsado por IA para backend robusto, servicios escalables y pipelines de CI/CD eficientes. Optimización automática de código y despliegues inteligentes.",
   description: "Desarrollo backend impulsado por inteligencia artificial: sistemas que se construyen en semanas, pipelines que aprenden de tus deploys, tests predictivos y optimización continua.",
   keywords: [
     "desarrollo impulsado por IA",
