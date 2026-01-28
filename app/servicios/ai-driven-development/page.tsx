@@ -15,7 +15,7 @@ export default function AiDrivenDevelopmentPage() {
       "@type": "Person",
       name: "Omar Antonio Díaz Peña",
       url: "https://www.linkedin.com/in/oadiazp/",
-      sameAs: ["https://www.linkedin.com/in/oadiazp/"],
+      sameAs: ["https://www.linkedin.com/in/oadiazp/", "https://github.com/oadiazp"],
     },
     url: `${siteConfig.url}/servicios/ai-driven-development`,
     sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
@@ -40,35 +40,34 @@ export default function AiDrivenDevelopmentPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/6 via-purple-800/6 to-pink-900/6" />
         <div className="relative max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-            AI Driven Development: <span className="gradient-text">Backend & CI/CD</span>
+            AI-Driven Development | <span className="gradient-text">Backend, CI/CD & Optimización</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto text-balance">
-            Desarrollo backend impulsado por inteligencia artificial para crear servicios escalables, optimizar código automáticamente y desplegar con pipelines CI/CD inteligentes.
+            Desarrollo backend impulsado por inteligencia artificial: sistemas que se construyen en semanas (no meses), pipelines que aprenden de tus deploys, y código que se optimiza continuamente.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/#services" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-all hover:scale-105">
-              {language === "en" ? "View Services" : "Ver Servicios"}
+            <a href="/" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-all hover:scale-105">
+              Inicio
             </a>
-            <a href="/#contact" className="px-8 py-4 border border-gray-700 hover:border-purple-500 text-white rounded-lg font-semibold transition-all hover:scale-105">
-              {language === "en" ? "Get In Touch" : "Contactar"}
+            <a href="/#services" className="px-8 py-4 border border-gray-700 hover:border-purple-500 text-white rounded-lg font-semibold transition-all hover:scale-105">
+              Servicios
             </a>
           </div>
         </div>
 
-        {/* Visual stats strip */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full px-6">
           <div className="max-w-5xl mx-auto grid grid-cols-3 gap-4 bg-gradient-to-r from-purple-800/10 via-pink-800/10 to-purple-800/10 p-1 rounded-2xl backdrop-blur-sm">
             <div className="bg-card-bg p-6 rounded-xl text-center border border-gray-800 shadow-sm">
-              <div className="text-3xl font-bold text-white gradient-text mb-2">95%</div>
-              <div className="text-sm text-gray-300">{language === "en" ? "Code Efficiency" : "Eficiencia de Código"}</div>
+              <div className="text-3xl font-bold text-white gradient-text mb-2">3-4x</div>
+              <div className="text-sm text-gray-300">Más Rápido que Desarrollo Tradicional</div>
             </div>
             <div className="bg-card-bg p-6 rounded-xl text-center border border-gray-800 shadow-sm">
-              <div className="text-3xl font-bold text-white gradient-text mb-2">50%</div>
-              <div className="text-sm text-gray-300">{language === "en" ? "Faster Deployments" : "Despliegues Más Rápidos"}</div>
+              <div className="text-3xl font-bold text-white gradient-text mb-2">219+</div>
+              <div className="text-sm text-gray-300">Tests Automatizados por Proyecto</div>
             </div>
             <div className="bg-card-bg p-6 rounded-xl text-center border border-gray-800 shadow-sm">
               <div className="text-3xl font-bold text-white gradient-text mb-2">24/7</div>
-              <div className="text-sm text-gray-300">{language === "en" ? "Automated Monitoring" : "Monitoreo Automatizado"}</div>
+              <div className="text-sm text-gray-300">Optimización Continua</div>
             </div>
           </div>
         </div>
@@ -76,49 +75,53 @@ export default function AiDrivenDevelopmentPage() {
 
       <section className="py-20 px-6 border-t border-gray-800">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">
-            {language === "en" ? "What is AI Driven Development?" : "¿Qué es el Desarrollo Backend Impulsado por IA?"}
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">El Problema con el Desarrollo Tradicional</h2>
           <p className="text-gray-400 mb-8">
-            {language === "en"
-              ? "AI Driven Development combines artificial intelligence with modern backend development practices to create self-optimizing systems. Our approach uses machine learning algorithms to analyze code patterns, predict potential issues, and automatically optimize performance while maintaining CI/CD pipelines that adapt to your project's needs."
-              : "El Desarrollo Backend Impulsado por IA combina inteligencia artificial con prácticas modernas de desarrollo backend para crear sistemas auto-optimizantes. Nuestro enfoque utiliza algoritmos de aprendizaje automático para analizar patrones de código, predecir problemas potenciales y optimizar automáticamente el rendimiento mientras mantiene pipelines CI/CD que se adaptan a las necesidades de tu proyecto."
-            }
+            Un sistema backend complejo toma 6-9 meses con un equipo tradicional. Requisitos, desarrollo, testing, más desarrollo, más testing. Y cuando terminas, los requisitos ya cambiaron.
           </p>
+          <p className="text-gray-400 mb-8">
+            Nosotros lo hacemos diferente: <strong className="gradient-text">orquestamos agentes de IA especializados</strong> que trabajan en paralelo, escriben código production-ready, y generan tests mientras tú duermes.
+          </p>
+          <p className="text-gray-400 mb-8">No es magia. Es metodología.</p>
 
+          <h2 className="text-3xl font-bold mb-4">Nuestros Servicios</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="card-hover p-6 rounded-xl bg-card-bg border border-gray-800">
-              <h3 className="font-semibold mb-2">
-                {language === "en" ? "Intelligent Backend" : "Backend Inteligente"}
-              </h3>
-              <p className="text-gray-400">
-                {language === "en"
-                  ? "AI-powered backend services that learn from usage patterns and automatically scale resources."
-                  : "Servicios backend impulsados por IA que aprenden de patrones de uso y escalan recursos automáticamente."
-                }
-              </p>
+              <h3 className="font-semibold mb-2">🚀 Smart Backend Services</h3>
+              <p className="text-gray-400 mb-2">Backends completos en semanas, no meses. Construimos sobre stacks probados (Odoo, Django, FastAPI) y aprovechamos ecosistemas open-source maduros para no reinventar la rueda.</p>
+              <div className="text-gray-400 text-sm">
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Arquitectura de dominio compleja (multi-moneda, impuestos locales, workflows)</li>
+                  <li>Integración con módulos OCA y librerías battle-tested</li>
+                  <li>Agentes AI configurados para tu stack específico</li>
+                  <li>Documentación automática y código mantenible</li>
+                </ul>
+                <p className="mt-2"><strong className="gradient-text">Resultado real:</strong> Sistema de gestión vehicular con 11 modelos de negocio, facturación recurrente y compliance fiscal — de cero a producción en 8 semanas.</p>
+              </div>
             </div>
             <div className="card-hover p-6 rounded-xl bg-card-bg border border-gray-800">
-              <h3 className="font-semibold mb-2">
-                {language === "en" ? "Smart CI/CD" : "CI/CD Inteligente"}
-              </h3>
-              <p className="text-gray-400">
-                {language === "en"
-                  ? "Continuous integration and deployment pipelines enhanced with AI for predictive testing and automated optimization."
-                  : "Pipelines de integración y despliegue continuo mejorados con IA para pruebas predictivas y optimización automatizada."
-                }
-              </p>
+              <h3 className="font-semibold mb-2">⚡ Smart CI/CD</h3>
+              <div className="text-gray-400 text-sm">
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Tests predictivos: priorizamos según el código que cambió</li>
+                  <li>Build optimization: caché inteligente que reduce tiempos 40-60%</li>
+                  <li>Auto-rollback con detección de anomalías</li>
+                  <li>Reportes que te dicen <em>por qué</em> falló, no solo <em>qué</em> falló</li>
+                </ul>
+                <p className="mt-2"><strong className="gradient-text">Resultado real:</strong> "El 80% de tus fallos en CI vienen de 3 patrones. Los detectamos antes de que lleguen a producción."</p>
+              </div>
             </div>
             <div className="card-hover p-6 rounded-xl bg-card-bg border border-gray-800">
-              <h3 className="font-semibold mb-2">
-                {language === "en" ? "Code Optimization" : "Optimización de Código"}
-              </h3>
-              <p className="text-gray-400">
-                {language === "en"
-                  ? "Automatic code analysis and refactoring using AI to improve performance, security, and maintainability."
-                  : "Análisis y refactorización automática de código usando IA para mejorar rendimiento, seguridad y mantenibilidad."
-                }
-              </p>
+              <h3 className="font-semibold mb-2">🔄 AI-Assisted Optimization</h3>
+              <div className="text-gray-400 text-sm">
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Refactoring asistido con contexto de proyecto</li>
+                  <li>Detección temprana de technical debt</li>
+                  <li>Performance profiling + sugerencias accionables</li>
+                  <li>Code review automatizado que mejora con cada iteración</li>
+                </ul>
+                <p className="mt-2"><strong className="gradient-text">Resultado real:</strong> Identificamos cuellos de botella antes de que tus usuarios los sufran. Sugerimos mejoras con PRs listos para mergear.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -126,15 +129,11 @@ export default function AiDrivenDevelopmentPage() {
 
       <section className="py-20 px-6 border-t border-gray-800">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">
-            {language === "en" ? "AI-Powered Development Process" : "Proceso de Desarrollo Backend Impulsado por IA"}
-          </h2>
-          <p className="text-gray-400 mb-6">
-            {language === "en"
-              ? "Our AI-driven approach transforms traditional development workflows into intelligent, adaptive processes."
-              : "Nuestro enfoque impulsado por IA transforma los flujos de trabajo tradicionales de desarrollo en procesos inteligentes y adaptativos."
-            }
-          </p>
+          <h2 className="text-3xl font-bold mb-4">Nuestro Proceso</h2>
+          <p className="text-gray-400 mb-6">1️⃣ <strong>Discovery & Stack</strong> — Analizamos tu dominio, elegimos el stack óptimo, configuramos agentes AI especializados en tu arquitectura.</p>
+          <p className="text-gray-400 mb-6">2️⃣ <strong>Desarrollo Paralelo</strong> — Mientras revisas un módulo, el siguiente ya está en desarrollo. Los agentes trabajan 24/7, tú diriges.</p>
+          <p className="text-gray-400 mb-6">3️⃣ <strong>Testing Continuo</strong> — Cada feature nace con tests. No es opcional: es cómo validamos que el código AI es production-ready.</p>
+          <p className="text-gray-400 mb-6">4️⃣ <strong>Optimización & Handoff</strong> — Entregamos código documentado, pipelines configurados, y un equipo que sabe mantenerlo.</p>
           <div className="grid md:grid-cols-2 gap-6">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
@@ -202,32 +201,21 @@ export default function AiDrivenDevelopmentPage() {
 
       <section className="py-20 px-6 border-t border-gray-800">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            {language === "en" ? "Meet Our AI Development Expert" : "Conoce a Nuestro Experto en Desarrollo IA"}
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">El Experto</h2>
           <div className="max-w-2xl mx-auto">
             <div className="bg-card-bg p-8 rounded-xl border border-gray-800 mb-6">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-2xl font-bold text-white">
                 OD
               </div>
               <h3 className="text-xl font-semibold mb-2">Omar Antonio Díaz Peña</h3>
+              <div className="text-lg font-semibold gradient-text mb-2">Especialista en Desarrollo AI & Backend</div>
               <p className="text-gray-400 mb-4">
-                {language === "en"
-                  ? "AI Development Specialist with extensive experience in backend systems, CI/CD automation, and machine learning integration."
-                  : "Especialista en Desarrollo IA con amplia experiencia en sistemas backend, automatización CI/CD e integración de machine learning."
-                }
+                +10 años en desarrollo de software empresarial. Experto en Odoo (v15-v19), arquitectura cloud, y orquestación de agentes AI para desarrollo. Ha llevado proyectos de 6-9 meses a 8 semanas usando Claude Code, Gemini CLI y metodologías de desarrollo asistido.
               </p>
-              <a
-                href="https://www.linkedin.com/in/oadiazp/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                LinkedIn Profile
-              </a>
+              <div className="flex items-center justify-center gap-4">
+                <a href="https://www.linkedin.com/in/oadiazp/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">LinkedIn</a>
+                <a href="https://github.com/oadiazp" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
@@ -235,24 +223,9 @@ export default function AiDrivenDevelopmentPage() {
 
       <section className="py-20 px-6 border-t border-gray-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            {language === "en" ? "Ready to Transform Your Backend Development?" : "¿Listo para Transformar tu Desarrollo Backend?"}
-          </h2>
-          <p className="text-gray-400 mb-8">
-            {language === "en"
-              ? "Let's discuss how AI-driven development can revolutionize your backend systems and CI/CD processes."
-              : "Hablemos de cómo el desarrollo backend impulsado por IA puede revolucionar tus sistemas backend y procesos CI/CD."
-            }
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50"
-          >
-            {language === "en" ? "Start Your AI Journey" : "Inicia tu Viaje IA"}
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+          <h2 className="text-3xl font-bold mb-4">¿Listo para Desarrollar Diferente?</h2>
+          <p className="text-gray-400 mb-8">El timeline que te han cotizado probablemente está desactualizado. Hablemos de lo que es posible hoy.</p>
+          <a href="/#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold">Agenda una Consultoría</a>
         </div>
       </section>
     </main>

@@ -3,20 +3,22 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "AI Driven Development | Backend & CI/CD Solutions",
-  description: "AI-powered backend development with intelligent CI/CD pipelines for automated code optimization and scalable services. Transform your development workflow with machine learning.",
+  description: "AI-powered backend development: systems built in weeks (not months), pipelines that learn from deploys, and continuous code optimization. Fast delivery, predictive testing and AI-assisted refactors.",
   keywords: [
     "AI driven development",
     "backend development",
     "CI/CD pipelines",
-    "intelligent deployments",
+    "predictive testing",
     "code optimization",
-    "scalable services",
+    "Odoo",
     "DevOps automation",
-    "machine learning development",
+    "AI agents",
+    "Claude Code",
+    "Gemini CLI",
   ],
   openGraph: {
     title: "AI Driven Development | Backend & CI/CD Solutions",
-    description: "Transform your backend development with AI-powered solutions and intelligent CI/CD pipelines.",
+    description: "Transform your backend development with AI-powered solutions: faster delivery, automated tests, and adaptive CI/CD.",
     url: `${siteConfig.url}/en/servicios/ai-driven-development`,
     type: "article",
     images: [{

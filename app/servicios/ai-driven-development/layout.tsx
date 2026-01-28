@@ -4,19 +4,20 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "AI Driven Development | Backend & CI/CD Solutions",
   description: "Desarrollo backend impulsado por IA para backend robusto, servicios escalables y pipelines de CI/CD eficientes. Optimización automática de código y despliegues inteligentes.",
+  description: "Desarrollo backend impulsado por inteligencia artificial: sistemas que se construyen en semanas, pipelines que aprenden de tus deploys, tests predictivos y optimización continua.",
   keywords: [
-    "AI driven development",
-    "backend development",
-    "CI/CD pipelines",
-    "intelligent deployments",
-    "code optimization",
-    "scalable services",
+    "desarrollo impulsado por IA",
+    "backend",
+    "CI/CD",
+    "tests automatizados",
+    "optimización de código",
+    "Odoo",
     "DevOps automation",
-    "machine learning development",
+    "integración IA",
   ],
   openGraph: {
     title: "AI Driven Development | Backend & CI/CD Solutions",
-    description: "Transforma tu desarrollo backend con IA. Servicios escalables, CI/CD inteligentes y optimización automática de código.",
+    description: "Transforma tu desarrollo backend con IA: entrega más rápida, tests predictivos y pipelines adaptativos.",
     url: `${siteConfig.url}/servicios/ai-driven-development`,
     type: "article",
     images: [{
