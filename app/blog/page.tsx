@@ -12,7 +12,7 @@ export default function BlogPage() {
       <section className="py-20 px-6 border-b border-gray-800">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-            Blog & Artículos
+            Blog & <span className="gradient-text">Artículos</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Insights sobre integración de IA en frontend, mejores prácticas de desarrollo y tendencias tecnológicas modernas.
