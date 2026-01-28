@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 import { Testimonials } from "./Testimonials";
 
 export function HomePage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const bugShieldSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -144,79 +144,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* About/Expertise Section */}
-      <section id="about" className="py-20 px-6 border-t border-gray-800">
-        <div className="max-w-5xl mx-auto">
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bugShieldSchema) }} />
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-            {t("aboutTitle")} <span className="gradient-text">{t("aboutTitleHighlight")}</span>
-          </h2>
-          <p className="text-xl text-gray-400 text-center mb-16 max-w-3xl mx-auto">
-            {t("aboutDescription")}
-          </p>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
-              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{t("computerScience")}</h3>
-              <p className="text-gray-400">
-                {t("computerScienceDesc")}
-              </p>
-            </div>
-            <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
-              <div className="w-12 h-12 rounded-lg bg-pink-600/20 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{t("frontendDesign")}</h3>
-              <p className="text-gray-400">
-                {t("frontendDesignDesc")}
-              </p>
-            </div>
-            <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
-              <div className="w-12 h-12 rounded-lg bg-violet-600/20 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{t("modernStack")}</h3>
-              <p className="text-gray-400">
-                {t("modernStackDesc")}
-              </p>
-            </div>
-            <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800 ai-card-special">
-              <style dangerouslySetInnerHTML={{__html: `
-                @keyframes glow-pulse-special {
-                  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 40px rgba(236, 72, 153, 0.2); }
-                  50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.6), 0 0 60px rgba(236, 72, 153, 0.4), 0 0 80px rgba(139, 92, 246, 0.3); }
-                }
-                .ai-card-special:hover {
-                  transform: translateY(-8px) scale(1.02);
-                  border-color: rgba(168, 85, 247, 0.8);
-                  animation: glow-pulse-special 2s ease-in-out infinite;
-                }
-              `}} />
-              <div className="w-12 h-12 rounded-lg bg-violet-600/20 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{t("aiInnovation")}</h3>
-              <p className="text-gray-400 mb-3">
-                {t("aiInnovationDesc")}
-              </p>
-              <a href="/servicios/integracion-ia" className="text-purple-400 hover:text-pink-400 transition-colors underline text-sm font-semibold">
-                → {t("discoverMore")}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section id="services" className="py-20 px-6 border-t border-gray-800">
         <div className="max-w-5xl mx-auto">
@@ -228,31 +155,36 @@ export function HomePage() {
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-bold mb-4">{t("aiConsulting2026")}</h3>
               <p className="text-gray-400 mb-6">
                 {t("aiConsulting2026Desc")}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("aiConsultingConversational")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("aiConsultingStreaming")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("aiConsultingPerformance")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("aiConsultingGenerative")}
@@ -269,6 +201,12 @@ export function HomePage() {
               </a>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-bold mb-4">{t("technicalConsulting")}</h3>
               <p className="text-gray-400 mb-6">
                 {t("technicalConsultingDesc")}
@@ -295,25 +233,75 @@ export function HomePage() {
               </ul>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">
+                {language === "en" ? "AI Driven Development" : "Desarrollo Backend Impulsado por IA"}
+              </h3>
+              <p className="text-gray-400 mb-6">
+                {language === "en"
+                  ? "Backend development powered by AI with intelligent CI/CD pipelines for automated optimization and scalable services."
+                  : "Desarrollo backend impulsado por IA con pipelines CI/CD inteligentes para optimización automatizada y servicios escalables."
+                }
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-center text-gray-300">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {language === "en" ? "Intelligent Backend Services" : "Servicios Backend Inteligentes"}
+                </li>
+                <li className="flex items-center text-gray-300">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {language === "en" ? "AI-Powered CI/CD" : "CI/CD Impulsado por IA"}
+                </li>
+                <li className="flex items-center text-gray-300">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {language === "en" ? "Automated Code Optimization" : "Optimización Automatizada de Código"}
+                </li>
+              </ul>
+              <a
+                href={`${language === "en" ? "/en" : ""}/servicios/ai-driven-development`}
+                className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50"
+              >
+                <span>{t("discoverMore")}</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+            <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-bold mb-4">{t("designSystems")}</h3>
               <p className="text-gray-400 mb-6">
                 {t("designSystemsDesc")}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("componentLibraries")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("styleGuidelines")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("documentation")}
@@ -321,25 +309,30 @@ export function HomePage() {
               </ul>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-bold mb-4">{t("aiTraining")}</h3>
               <p className="text-gray-400 mb-6">
                 {t("aiTrainingDesc")}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-violet-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("aiTrainingCurriculum")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-violet-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("aiTrainingWorkshops")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-violet-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("aiTrainingMentorship")}
@@ -347,25 +340,30 @@ export function HomePage() {
               </ul>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-bold mb-4">{t("uiuxDesign")}</h3>
               <p className="text-gray-400 mb-6">
                 {t("uiuxDesignDesc")}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-violet-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("userResearch")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-violet-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("wireframingPrototyping")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-violet-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("usabilityTesting")}
@@ -373,6 +371,11 @@ export function HomePage() {
               </ul>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-bold mb-4">{t("developmentServices")}</h3>
               <p className="text-gray-400 mb-6">
                 {t("developmentServicesDesc")}
@@ -399,23 +402,28 @@ export function HomePage() {
               </ul>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
+              <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
               <h3 className="text-2xl font-bold mb-4">{t("bugShieldTitle")}</h3>
               <p className="text-gray-400 mb-4">{t("bugShieldDesc")}</p>
               <ul className="space-y-3 mb-4">
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("bugShieldPoint1")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("bugShieldPoint2")}
                 </li>
                 <li className="flex items-center text-gray-300">
-                  <svg className="w-5 h-5 text-pink-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {t("bugShieldPoint3")}

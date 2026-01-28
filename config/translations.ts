@@ -7,8 +7,8 @@ export const translations = {
     
     // Hero Section
     title: "Consultora de Integración IA",
-    titleHighlight: "en Frontend",
-    description: "Ingeniera en Ciencias Informáticas con Másters duales en Diseño Frontend. Transformando ideas en experiencias digitales elegantes y escalables.",
+    titleHighlight: "en Software development",
+    description: "Ingeniera en Ciencias Informáticas con Másters duales en Desarrollo de Software. Transformando ideas en experiencias digitales elegantes y escalables.",
     viewServices: "Ver Servicios",
     getInTouch: "Ponte en Contacto",
     
@@ -49,7 +49,7 @@ export const translations = {
     wireframingPrototyping: "Wireframing & Prototipado",
     usabilityTesting: "Pruebas de Usabilidad",
     
-    developmentServices: "Servicios de Desarrollo",
+    developmentServices: "Servicios de Desarrollo Frontend impulsado por IA",
     developmentServicesDesc: "Desarrollo frontend completo con frameworks modernos y herramientas para aplicaciones de alto rendimiento.",
     reactNextjsApps: "Apps React & Next.js",
     typescriptDevelopment: "Desarrollo TypeScript",
@@ -187,8 +187,8 @@ export const translations = {
     
     // Hero Section
     title: "AI Integration Consultant",
-    titleHighlight: "for Frontend",
-    description: "Computer Science Engineer with dual Master's degrees in Frontend Design. Transforming ideas into elegant, scalable digital experiences.",
+    titleHighlight: "for Software Development",
+    description: "Computer Science Engineer with dual Master's degrees in Software Development. Transforming ideas into elegant, scalable digital experiences.",
     viewServices: "View Services",
     getInTouch: "Get in Touch",
     
@@ -229,7 +229,7 @@ export const translations = {
     wireframingPrototyping: "Wireframing & Prototyping",
     usabilityTesting: "Usability Testing",
     
-    developmentServices: "Development Services",
+    developmentServices: "AI-Powered Frontend Development Services",
     developmentServicesDesc: "Full-stack frontend development with modern frameworks and tools for high-performance applications.",
     reactNextjsApps: "React & Next.js Apps",
     typescriptDevelopment: "TypeScript Development",
