@@ -1,0 +1,87 @@
+---
+title: "OK Car Hire — Technical & Commercial Case Study"
+description: "Delivered an enterprise car-rental platform in 1.5 months: clean architecture, high performance and AI acceleration for enterprise-grade teams."
+date: "2026-01-29"
+author: "Daily Miranda Pardo"
+category: "Best Practices"
+image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop"
+keywords: ["case study","car rental","performance","AI acceleration","Odoo integration","React","Vite"]
+lang: "en"
+---
+
+OK Car Hire is a technical and commercial case study that demonstrates how disciplined engineering, AI-assisted automation, and performance-first practices enable delivering enterprise-grade products under tight timelines without sacrificing quality.
+
+## Project summary
+In under six weeks we shipped an enterprise car-rental platform aimed at large development houses and consultancies. The technical goals were straightforward: clean architecture, typed services, ERP integration (Odoo), and a high-performance user experience. Commercially, the product needed to be a repeatable blueprint for future projects.
+
+## Stack & key components
+- **Frontend:** React 18 + TypeScript (strict)
+- **Build / Dev:** Vite (HMR, tree-shaking, minification)
+- **Styling:** Tailwind CSS + PostCSS
+- **Backend ERP:** Odoo 18 via JSON-RPC 2.0
+- **E2E tests:** Playwright with Page Object Model
+- **Image optimization:** WebP, responsive srcset, lazy loading
+
+### Typed services & contracts
+We implemented decoupled services with TypeScript contracts — `vehiclesService`, `categoriesService`, `helpdeskService` — to work safely with Odoo models like `fleet.vehicle` and `vehicle.rental.agreement`. Example DTO:
+
+```typescript
+export type VehicleDTO = {
+  id: number;
+  name: string;
+  categoryId: number;
+  plate?: string;
+  active: boolean;
+};
+
+export interface VehiclesService {
+  list(page?: number): Promise<VehicleDTO[]>;
+  get(id: number): Promise<VehicleDTO>;
+  create(payload: Partial<VehicleDTO>): Promise<VehicleDTO>;
+}
+```
+
+Typing enabled automatic mock generation and reliable refactors.
+
+## Enterprise integration & architecture
+A resilient JSON-RPC client handles authentication, retries, and error normalization for CRUD operations against Odoo models. For faster offline development we used a `VITE_USE_MOCK` switch to enable realistic mocks and speed up iteration.
+
+- Decoupled modules for testability and maintainability
+- Strict contracts to reduce ambiguity and technical debt
+- Robust logging and tracing for production debugging
+
+We also automated PR generation and documentation to streamline handoffs.
+
+## AI as a strategic accelerator
+AI agents produced base components, E2E test templates, realistic test data and suggested refactors that became PRs. This practical use of AI resulted in:
+
+- Faster generation of repetitive code
+- Higher-quality test suites and test fixtures
+- Reduced manual review time while preserving technical quality
+
+The result: significantly shorter delivery and review cycles.
+
+## Performance & code optimization
+- Lazy load images and components to improve LCP
+- Code-splitting and dynamic imports per route
+- Tree-shaking and minification with Vite
+- Automated WebP conversions and responsive `srcset`
+- Nginx configured with Gzip and Cache-Control for static assets
+
+The outcome was measurable improvements in LCP, TTFB, and lower hosting costs.
+
+## Quality & deployment
+Playwright E2E covers critical flows (booking, payments, multi-step navigation). The CI pipeline uses Docker multi-stage builds (Node → Nginx) and healthchecks to ensure safe production deployment.
+
+## Business impact
+Combined, AI acceleration, strict typing and robust testing deliver:
+
+- Repeatable, fast MVP delivery
+- Lower operational risks and costs
+- Enterprise scalability and ERP connectivity
+
+OK Car Hire is a replicable blueprint. If you'd like to apply this approach to your product, check our services: [/en/servicios/ai-driven-development](/en/servicios/ai-driven-development) and [/en/servicios/integracion-ia](/en/servicios/integracion-ia).
+
+---
+
+Would you like me to add images, screenshots or code links to a GitHub repo for this case study before publishing? I can also run the build and commit the files now.

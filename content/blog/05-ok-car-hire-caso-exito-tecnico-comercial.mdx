@@ -1,0 +1,88 @@
+---
+title: "OK Car Hire — Caso de Éxito Técnico y Comercial"
+description: "Entregamos una plataforma empresarial de alquiler de vehículos en 1.5 meses: arquitectura limpia, alto rendimiento y aceleración por IA para equipos que exigen calidad y escalabilidad."
+date: "2026-01-29"
+author: "Daily Miranda Pardo"
+category: "Best Practices"
+image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop"
+keywords: ["case study","car rental","performance","AI acceleration","Odoo integration","React","Vite","Playwright"]
+lang: "es"
+---
+
+OK Car Hire es un caso de éxito que muestra cómo combinar ingeniería sólida, automatización por IA y prácticas de rendimiento para entregar un producto empresarial en plazos agresivos sin sacrificar la calidad.
+
+## Resumen del proyecto
+En menos de mes y medio entregamos una plataforma empresarial de alquiler de vehículos diseñada para grandes desarrolladoras y consultoras. El objetivo técnico fue claro: arquitectura limpia, servicios tipados, integración con ERP (Odoo) y experiencia de usuario de alto rendimiento. Comercialmente, la solución debía ser reutilizable como blueprint para nuevos clientes.
+
+## Stack y componentes clave
+- **Frontend:** React 18 + TypeScript (estricto)
+- **Build / Dev:** Vite (HMR, tree-shaking, minificación)
+- **Estilos:** Tailwind CSS + PostCSS
+- **Backend ERP:** Odoo 18 vía JSON-RPC 2.0
+- **Tests E2E:** Playwright con Page Object Model
+- **Optimización de imágenes:** WebP, srcset, lazy loading
+
+### Servicios tipados y contratos
+Se definieron servicios desacoplados con contratos TypeScript (ej.: `vehiclesService`, `categoriesService`, `helpdeskService`) que permiten trabajar con modelos Odoo de manera segura y testable. Un ejemplo de DTO simplificado:
+
+```typescript
+export type VehicleDTO = {
+  id: number;
+  name: string;
+  categoryId: number;
+  plate?: string;
+  active: boolean;
+};
+
+export interface VehiclesService {
+  list(page?: number): Promise<VehicleDTO[]>;
+  get(id: number): Promise<VehicleDTO>;
+  create(payload: Partial<VehicleDTO>): Promise<VehicleDTO>;
+}
+```
+
+La tipificación y los contratos permitieron generación automática de mocks y tests.
+
+## Integración y arquitectura empresarial
+Desarrollamos un cliente JSON-RPC robusto que gestiona autenticación, errores y retries, permitiendo operaciones CRUD sobre modelos Odoo como `fleet.vehicle` y `vehicle.rental.agreement`. Para acelerar el desarrollo local, activamos mocks con la variable `VITE_USE_MOCK` que simula respuestas realistas y acelera ciclos de QA.
+
+- Módulos desacoplados que facilitan pruebas unitarias e integración
+- Contratos claros que reducen ambigüedad y deuda técnica
+- Entradas de logs y trazabilidad para debugging en producción
+
+Integramos también con servicios internos y definimos un flujo para generación de PRs y documentación automática, mejorando la mantenibilidad.
+
+## IA como palanca estratégica
+La IA no fue un adorno: se usó para generar componentes base, plantillas de tests E2E, datos de prueba realistas y sugerencias de refactor que se convirtieron en PRs automáticamente. Las ventajas fueron:
+
+- Aceleración de generación de código repetitivo
+- Tests más completos y datos de prueba de calidad
+- Menos tiempo de revisión manual sin perder rigor técnico
+
+Esto redujo el tiempo total de implementación y revisión significativamente.
+
+## Rendimiento y optimización (prácticas aplicadas)
+- Lazy loading de imágenes y componentes para mejorar LCP
+- Code splitting y dynamic imports por ruta
+- Tree-shaking y minificación con Vite
+- Conversión automática a WebP y uso de `srcset`
+- Nginx configurado con Gzip y políticas de cache para assets
+
+El impacto se tradujo en mejor LCP, TTFB optimizado y menor coste de hosting.
+
+## Calidad y despliegue
+E2E con Playwright cubrió flujos críticos (reserva, pagos, gestión de contratos). El pipeline CI usa Docker multi-stage (build Node → producción Nginx) y healthchecks para garantizar despliegues seguros.
+
+## Valor comercial
+La combinación de IA, typado estricto y testing robusto entrega:
+
+- MVPs complejos en plazos agresivos
+- Menor riesgo y coste de mantenimiento
+- Reutilizabilidad y escalabilidad para grandes consultoras
+
+## Conclusión
+OK Car Hire es un blueprint operativo: robusto, performante y repetible. Si te interesa replicar este enfoque para un proyecto empresarial, revisa nuestros servicios de integración y consultoría: [/servicios/ai-driven-development](/servicios/ai-driven-development) y [/servicios/integracion-ia](/servicios/integracion-ia).
+
+---
+
+¿Quieres que convierta este artículo en una entrada en el blog y publique la versión en inglés también? Estoy listo para generar la traducción adaptada y empujar los archivos.
