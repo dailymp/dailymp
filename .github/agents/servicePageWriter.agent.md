@@ -338,6 +338,60 @@ git commit -m "feat(services): add {service-name} service page"
 git push origin main
 ```
 
+### PASO 11: CREAR LA CARD EN LA HOMEPAGE (SECCIÓN DE SERVICIOS)
+
+El agente debe además crear (o editar) una card en la sección de servicios de la homepage para que el nuevo servicio sea visible y tenga un botón "Descubre más" que enlace a la nueva página.
+
+- Localización típica a modificar: `app/components/HomePage.tsx` o el componente responsable de la sección de servicios (buscar `HomePage`, `HomePage.tsx` o `ServicesGrid`).
+- Si no existe un componente dedicado, editar `app/page.tsx` donde se renderice la sección de servicios.
+
+El agente debe realizar los siguientes pasos concretos:
+
+1. Añadir las claves de traducción para la card:
+
+```ts
+// en config/translations.ts (ES)
+{serviceKey}CardTitle: "Título corto para la card",
+{serviceKey}CardExcerpt: "Breve descripción (1 línea)",
+{serviceKey}CardCta: "Descubre más",
+
+// en config/translations.ts (EN)
+{serviceKey}CardTitle: "Short title for card",
+{serviceKey}CardExcerpt: "Brief one-line description",
+{serviceKey}CardCta: "Discover more",
+```
+
+2. Insertar una entrada JSX en la sección de servicios con la misma estructura visual que las cards existentes. Ejemplo de snippet que el agente puede insertar o añadir como helper:
+
+```tsx
+<div className="p-4 md:p-6 rounded-xl bg-card-bg border border-gray-800 hover:shadow-lg transition">
+  <h4 className="font-semibold mb-2">{t("{serviceKey}CardTitle")}</h4>
+  <p className="text-sm text-gray-400 mb-4">{t("{serviceKey}CardExcerpt")}</p>
+  <a href={`/${language === 'en' ? 'en/' : ''}servicios/{serviceSlug}`} className="inline-flex items-center gap-2 px-4 py-2 bg-transparent border border-gray-700 hover:border-purple-500 text-white rounded-lg text-sm">
+    {t("{serviceKey}CardCta")}
+  </a>
+</div>
+```
+
+3. Mantener la consistencia de estilos: usar `bg-card-bg`, `border-gray-800`, `rounded-xl`, `card-hover` u otras clases ya presentes en las cards actuales.
+
+4. Si la sección de servicios es generada dinámicamente desde una lista (por ejemplo, un array de objetos), el agente debe añadir el nuevo entry al array de datos usado por la homepage (archivo posible: `app/components/HomeServices.tsx` o `lib/services.ts`). La entrada debe incluir `titleKey`, `excerptKey`, `slug`, `image` y `order`.
+
+5. Verificar en el build que la card aparece y que el enlace `/servicios/{serviceSlug}` y `/en/servicios/{serviceSlug}` funcionan correctamente.
+
+6. Añadir al commit los archivos modificados de la homepage:
+
+```bash
+cd /Users/dailymirandapardo/landing/dailymp
+git add app/components/ app/page.tsx config/translations.ts
+git commit -m "feat(home): add service card for {service-name}"
+git push origin main
+```
+
+---
+
+Nota: el agente debe evitar reescribir UI compleja; si detecta un patrón dinámico existente (un array o map para las cards), debe preferir añadir una entrada de datos en lugar de modificar JSX repetitivo.
+
 ---
 
 ## Estructura de archivos a crear
