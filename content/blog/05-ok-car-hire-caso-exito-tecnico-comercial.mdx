@@ -9,8 +9,6 @@ keywords: ["case study","car rental","performance","AI acceleration","Odoo integ
 lang: "es"
 ---
 
-OK Car Hire — Resumen
-
 Resumen: En menos de 1 mes y medio entregamos una plataforma empresarial de alquiler de vehículos que combina arquitectura limpia, excelencia técnica, alto rendimiento y aceleración por IA, pensada para grandes empresas de desarrollo y consultoras que exigen calidad, velocidad y escalabilidad.
 
 ## 🏗️ Stack y componentes clave 🔧
@@ -24,14 +22,14 @@ Resumen: En menos de 1 mes y medio entregamos una plataforma empresarial de alqu
 - **Tests E2E:** Playwright con Page Object Model
 
 ## 🔌 Integración y arquitectura empresarial
-Cliente JSON-RPC robusto que maneja autenticación, errores y operaciones CRUD sobre modelos Odoo (`fleet.vehicle`, `vehicle.rental.agreement`, `vehicle.rental.category`, etc.).
+Cliente JSON-RPC robusto que maneja autenticación, errores y operaciones CRUD sobre modelos Odoo (`fleet.vehicle`, `vehicle.rental.agreement`, `vehicle.rental.category`, etc.). Para una descripción técnica más detallada del backend y del proceso de entrega, consulta el artículo técnico: [From zero to production in 8 weeks — Building a vehicle rental system with AI co-pilots](https://medium.com/@oadiaz/from-zero-to-production-in-8-weeks-building-a-vehicle-rental-system-with-ai-co-pilots-be8a9dbbf7a7).
 
 - Mocks togglables con `VITE_USE_MOCK` para desarrollo offline y ciclos rápidos de iteración.
 - Servicios desacoplados y contratos estrictos que facilitan mantenibilidad y escalabilidad.
 
 También automatizamos generación de PRs y documentación para un flujo de trabajo reproducible.
 
-## 🤖 IA como palanca estratégica (nueva y destacada)
+## 🤖 IA como palanca estratégica
 Agentes de IA y automatizaciones se usaron para:
 
 - Generación de componentes base y plantillas de tests E2E.
@@ -40,7 +38,7 @@ Agentes de IA y automatizaciones se usaron para:
 
 Resultado: reducción significativa del tiempo de implementación y de revisión humana, sin comprometer la calidad técnica.
 
-## ⚡ Rendimiento y optimización de código (nueva y destacada)
+## ⚡ Rendimiento y optimización de código
 - Lazy loading de imágenes y componentes para reducir el bundle inicial y mejorar LCP.
 - Code-splitting & dynamic imports para cargar solo lo necesario por ruta.
 - Tree-shaking y minificación con Vite para eliminar código muerto.
@@ -50,7 +48,7 @@ Resultado: reducción significativa del tiempo de implementación y de revisión
 
 Impacto: mejoras palpables en tiempos de carga, experiencia interactiva y reducción de costes de hosting/banda.
 
-## 📱 Totalmente responsive y SEO-friendly (nueva y destacada)
+## 📱 Totalmente responsive y SEO-friendly
 - Mobile-first: diseño y pruebas en múltiples breakpoints para consistencia en móvil, tablet y desktop.
 - SEO-friendly: HTML semántico, meta tags optimizados (`title`/`description`), Open Graph y URLs limpias; uso de `preconnect`/`prefetch` para mejorar rastreabilidad y velocidad percibida.
 
