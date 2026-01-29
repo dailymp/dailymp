@@ -1,86 +1,76 @@
 ---
 title: "OK Car Hire — Technical & Commercial Case Study"
-description: "Delivered an enterprise car-rental platform in 1.5 months: clean architecture, high performance and AI acceleration for enterprise-grade teams."
+description: "Summary: In under 1.5 months we delivered an enterprise car-rental platform that combines clean architecture, engineering excellence, high performance and AI acceleration, designed for large development houses and consultancies that demand quality, speed and scalability."
 date: "2026-01-29"
 author: "Daily Miranda Pardo"
 category: "Best Practices"
 image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop"
-keywords: ["case study","car rental","performance","AI acceleration","Odoo integration","React","Vite"]
+keywords: ["case study","car rental","performance","AI acceleration","Odoo integration","React","Vite","Figma","DTO","odoo-contracts","WebP","OptimizedImage","TypeScript","Tailwind","PostCSS"]
 lang: "en"
 ---
 
-OK Car Hire is a technical and commercial case study that demonstrates how disciplined engineering, AI-assisted automation, and performance-first practices enable delivering enterprise-grade products under tight timelines without sacrificing quality.
+OK Car Hire — Summary
 
-## Project summary
-In under six weeks we shipped an enterprise car-rental platform aimed at large development houses and consultancies. The technical goals were straightforward: clean architecture, typed services, ERP integration (Odoo), and a high-performance user experience. Commercially, the product needed to be a repeatable blueprint for future projects.
+Summary: In under 1.5 months we delivered an enterprise car-rental platform that combines clean architecture, engineering excellence, high performance and AI acceleration, designed for large development houses and consultancies that demand quality, speed and scalability.
 
-## Stack & key components
+## 🏗️ Stack & key components 🔧
 - **Frontend:** React 18 + TypeScript (strict)
 - **Build / Dev:** Vite (HMR, tree-shaking, minification)
 - **Styling:** Tailwind CSS + PostCSS
 - **Backend ERP:** Odoo 18 via JSON-RPC 2.0
+- **Design:** Figma with hand-off and plugins (VSCode ↔ Figma sync)
+- **Typed services & contracts:** `vehiclesService`, `categoriesService`, `helpdeskService` and DTOs in `odoo-contracts.ts`
+- **Image optimization:** WebP / `OptimizedImage` (lazy, `srcset`, `decoding="async"`)
 - **E2E tests:** Playwright with Page Object Model
-- **Image optimization:** WebP, responsive srcset, lazy loading
 
-### Typed services & contracts
-We implemented decoupled services with TypeScript contracts — `vehiclesService`, `categoriesService`, `helpdeskService` — to work safely with Odoo models like `fleet.vehicle` and `vehicle.rental.agreement`. Example DTO:
+## 🔌 Enterprise integration & architecture
+Resilient JSON-RPC client handling authentication, errors and CRUD operations over Odoo models (`fleet.vehicle`, `vehicle.rental.agreement`, `vehicle.rental.category`, etc.).
 
-```typescript
-export type VehicleDTO = {
-  id: number;
-  name: string;
-  categoryId: number;
-  plate?: string;
-  active: boolean;
-};
+- Togglable mocks with `VITE_USE_MOCK` for offline development and fast iteration.
+- Decoupled services and strict contracts for maintainability and scalability.
 
-export interface VehiclesService {
-  list(page?: number): Promise<VehicleDTO[]>;
-  get(id: number): Promise<VehicleDTO>;
-  create(payload: Partial<VehicleDTO>): Promise<VehicleDTO>;
-}
-```
+We also automated PR generation and documentation to keep the workflow reproducible.
 
-Typing enabled automatic mock generation and reliable refactors.
+## 🤖 AI as a strategic lever (new & highlighted)
+AI agents and automations were used to:
 
-## Enterprise integration & architecture
-A resilient JSON-RPC client handles authentication, retries, and error normalization for CRUD operations against Odoo models. For faster offline development we used a `VITE_USE_MOCK` switch to enable realistic mocks and speed up iteration.
+- Generate base components and E2E test templates.
+- Create realistic test data and mocks.
+- Suggest refactors and code optimizations, and generate PRs/documentation automatically.
 
-- Decoupled modules for testability and maintainability
-- Strict contracts to reduce ambiguity and technical debt
-- Robust logging and tracing for production debugging
+Result: significant reduction in implementation and review time without compromising technical quality.
 
-We also automated PR generation and documentation to streamline handoffs.
+## ⚡ Performance & code optimization (new & highlighted)
+- Lazy loading of images and components to reduce initial bundle and improve LCP.
+- Code-splitting & dynamic imports to load only what’s necessary per route.
+- Tree-shaking and minification with Vite to remove dead code.
+- Image optimization (WebP, `srcset`, conversions) and attributes `loading="lazy"` + `decoding="async"`.
+- Caching & compression: Nginx configured with Gzip, `Cache-Control` and expirations for static assets.
+- Additional practices: selective prefetching, dependency analysis and TTFB/TTI optimizations.
 
-## AI as a strategic accelerator
-AI agents produced base components, E2E test templates, realistic test data and suggested refactors that became PRs. This practical use of AI resulted in:
+Impact: measurable improvements in load times, interactive experience and reduced hosting/bandwidth costs.
 
-- Faster generation of repetitive code
-- Higher-quality test suites and test fixtures
-- Reduced manual review time while preserving technical quality
+## 📱 Fully responsive and SEO-friendly (new & highlighted)
+- Mobile-first: design and testing across breakpoints for consistent mobile, tablet and desktop experiences.
+- SEO-friendly: semantic HTML, optimized meta tags (`title`/`description`), Open Graph and clean URLs; use of `preconnect`/`prefetch` to improve crawlability and perceived speed.
 
-The result: significantly shorter delivery and review cycles.
+Combined with performance and accessibility, this improves indexing, CTR and conversion rates.
 
-## Performance & code optimization
-- Lazy load images and components to improve LCP
-- Code-splitting and dynamic imports per route
-- Tree-shaking and minification with Vite
-- Automated WebP conversions and responsive `srcset`
-- Nginx configured with Gzip and Cache-Control for static assets
+## 🧪 Quality & deployment
+- Playwright E2E automates critical flows (forms, bookings, multi-step navigation).
+- CI/CD friendly: Docker multi-stage builds (Node → Nginx) with healthchecks and security.
+- Best practices: code reviews, integrated documentation and linters/TS to reduce technical debt.
 
-The outcome was measurable improvements in LCP, TTFB, and lower hosting costs.
+## 💼 Business value for large dev shops and consultancies
+- Rapid, repeatable delivery: complex MVPs on aggressive timelines thanks to AI + automation.
+- Reduced risk: strict TypeScript and testing reduce regressions and operational costs.
+- Enterprise scalability: ERP integrations and modular architecture ready for growth.
+- Differentiation in proposals: pixel-perfect design with Figma + team sync, combined with high-performance engineering.
 
-## Quality & deployment
-Playwright E2E covers critical flows (booking, payments, multi-step navigation). The CI pipeline uses Docker multi-stage builds (Node → Nginx) and healthchecks to ensure safe production deployment.
+## ✅ Conclusion
+OK Car Hire is an operational blueprint: robust architecture, high-quality standards, optimized performance, SEO and strategic use of AI agents that speed delivery and improve quality. It’s a replicable, scalable solution for enterprise projects seeking speed, maintainability and high business impact.
 
-## Business impact
-Combined, AI acceleration, strict typing and robust testing deliver:
-
-- Repeatable, fast MVP delivery
-- Lower operational risks and costs
-- Enterprise scalability and ERP connectivity
-
-OK Car Hire is a replicable blueprint. If you'd like to apply this approach to your product, check our services: [/en/servicios/ai-driven-development](/en/servicios/ai-driven-development) and [/en/servicios/integracion-ia](/en/servicios/integracion-ia).
+Interested in applying this approach? See [/en/servicios/ai-driven-development](/en/servicios/ai-driven-development) or [contact us](/#contact).
 
 ---
 
