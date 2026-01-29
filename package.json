@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "keywords": [],
+  "keywords": ["nextjs", "react", "typescript", "tailwindcss"],
   "author": "",
   "license": "ISC",
   "description": "",
