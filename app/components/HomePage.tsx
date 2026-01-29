@@ -338,6 +338,15 @@ export function HomePage() {
                   {t("aiTrainingMentorship")}
                 </li>
               </ul>
+              <a
+                href={`${language === "en" ? "/en" : ""}/servicios/formacion-desarrollo-ia`}
+                className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg font-semibold transition-all hover:scale-105 hover:shadow-lg hover:shadow-purple-600/50"
+              >
+                <span>{t("discoverMore")}</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
             </div>
             <div className="card-hover p-8 rounded-xl bg-card-bg border border-gray-800">
               <div className="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center mb-4">
