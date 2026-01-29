@@ -52,7 +52,7 @@ jobs:
           # Usar './public_html/' puede crear una carpeta `public_html` dentro de `public_html`.
           server-dir: ./ # La raíz de tu web en Hostinger (relativo al FTP home)
           dangerous-clean-slate: true # BORRA lo que no esté en 'out'. ¡Cuidado si tienes otros archivos en el hosting!
-          protocol: ftps            # Hostinger requiere FTPS explícito
-          port: 21                  # Aseguramos el puerto
+          protocol: sftp            # Hostinger requiere FTPS explícito
+          port: 22                 # Aseguramos el puerto
           security: loose              # Permite conexiones menos estrictas
           timeout: 60000
