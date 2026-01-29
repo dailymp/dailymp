@@ -43,7 +43,14 @@ export function StructuredData() {
     url: siteConfig.url,
     email: siteConfig.email,
     image: siteConfig.seo.image,
+    logo: siteConfig.seo.image,
     priceRange: "€€",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Maestro Vicente Lleo 10",
+      addressLocality: "Valencia",
+      addressCountry: "ES"
+    },
     areaServed: {
       "@type": "Place",
       name: "Worldwide"
