@@ -206,6 +206,9 @@ export const translations = {
     // Footer
     allRightsReserved: "Todos los derechos reservados.",
     builtWith: "Hecho con Next.js, TypeScript y Tailwind CSS",
+    writtenBy: "Escrito por",
+    by: "Por",
+    footerAuthorDesc: "Consultora especializada en integración de IA en frontend y desarrollo web moderno.",
   },
   en: {
     // Navigation
@@ -414,6 +417,9 @@ export const translations = {
     // Footer
     allRightsReserved: "All rights reserved.",
     builtWith: "Built with Next.js, TypeScript, and Tailwind CSS",
+    writtenBy: "Written by",
+    by: "By",
+    footerAuthorDesc: "Consultant specialized in AI integration for frontend and modern web development.",
   },
 };
 

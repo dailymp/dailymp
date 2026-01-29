@@ -82,7 +82,7 @@ export function BlogPostContent({
   image,
   validSlugs,
 }: BlogPostContentProps) {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [imageError, setImageError] = React.useState(false);
   // No automatic redirect; site will serve Spanish-only slugs to avoid prerender issues
 
@@ -138,7 +138,7 @@ export function BlogPostContent({
           <span className="text-sm">•</span>
           <span className="text-sm">{readingTime}</span>
           <span className="text-sm">•</span>
-          <span className="text-sm">Por {author}</span>
+          <span className="text-sm">{t("by")} {author}</span>
         </div>
       </header>
 
@@ -151,10 +151,10 @@ export function BlogPostContent({
       <footer className="mt-12 pt-8 border-t border-gray-800 px-6 pb-6">
         <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-lg p-6 border border-purple-800/50">
           <p className="text-gray-300 mb-4">
-            Escrito por <span className="font-semibold text-white">{author}</span>
+            {t("writtenBy")} <span className="font-semibold text-white">{author}</span>
           </p>
           <p className="text-gray-400 text-sm">
-            Consultora especializada en integración de IA en frontend y desarrollo web moderno.
+            {t("footerAuthorDesc")}
           </p>
         </div>
       </footer>
