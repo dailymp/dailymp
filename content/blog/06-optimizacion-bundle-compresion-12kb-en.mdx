@@ -1,0 +1,86 @@
+---
+title: "Bundling and Compression: how we shipped ~12KB in production"
+description: "Practical strategies to shrink bundles, optimize delivery and leverage Brotli — real case: ~12KB transferred in production." 
+date: "2026-01-30"
+author: "Daily Miranda Pardo"
+category: "Performance"
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop"
+keywords: ["bundle","optimization","Turbopack","Brotli","performance","Next.js","MDX","compression"]
+lang: "en"
+---
+
+Bundle optimization is a cross-cutting concern: architecture, build pipeline and server delivery. In this post I outline the practical techniques we applied at DailyMP to shrink client payloads and why, after those optimizations, our production page transfers at around **12KB** thanks to Brotli and static delivery.
+
+## Measure before you optimize
+
+We start by measuring: `ANALYZE=true npm run build -- --webpack` produces treemaps under `.next/analyze/` and `du` helps quantify chunk sizes. Identify the "top offenders" first — large third-party libraries, unnecessary polyfills, or code marked for the client that could be server-side.
+
+## Levers we used
+
+- **Remove unused dependencies**: packages used only by development scripts (like `png-to-ico`) were removed to reduce the transitive dependency surface.
+
+- **Favor Server Components**: pages that only render HTML were migrated off `"use client"`. Client Components force shipping React runtime and client logic.
+
+- **MDX processing strategy**: serialize MDX server-side with `next-mdx-remote` and only hydrate in the client what’s necessary. Server-side `unified`/`remark` processing yields SEO-friendly HTML.
+
+- **Avoid legacy polyfills**: configure `.browserslistrc` to target modern browsers and skip heavy polyfills that inflate `polyfills` chunk.
+
+- **Lazy-load heavy components** with `next/dynamic` and `ssr: false` where appropriate.
+
+- **Use Turbopack**: Next.js 16 defaults to Turbopack, which in our tests produced smaller bundles and much faster builds than webpack.
+
+## Concrete examples
+
+1) Server vs Client component transformation:
+
+```tsx
+// server component (no 'use client')
+import { getTranslations } from '@/lib/i18n';
+export default async function Page({ params }){
+  const t = await getTranslations(params.locale);
+  return <div>{t('title')}</div>;
+}
+```
+
+2) Dynamic import for non-critical UI:
+
+```tsx
+import dynamic from 'next/dynamic';
+const Widget = dynamic(() => import('@/components/Widget'), { ssr: false });
+```
+
+3) Confirm Brotli on production:
+
+```bash
+curl -I -H "Accept-Encoding: br, gzip" https://dailymp.es/ | grep -i content-encoding
+# content-encoding: br
+```
+
+## Why 12KB transferred is possible
+
+- Raw bundle sizes on disk (e.g. `.next/static`) are larger, but Brotli compression shrinks them dramatically.
+- Since we offload Markdown/MDX processing to the server and favor server rendering, the client receives a small, focused JS payload.
+- Hostinger serves Brotli, so the effective bytes over the wire are a fraction of the raw bundle.
+
+## Practical checklist to keep sizes low
+
+- Run bundle analyzer regularly.
+- Keep heavy logic server-side. Use Server Components for markup-only pages.
+- Dynamic import non-critical UI.
+- Narrow `browserslist` to modern targets.
+
+## Links
+
+- AI-driven development service: /en/servicios/ai-driven-development
+- QA & testing service: /en/servicios/bug-shield
+
+## Final thoughts
+
+The difference between megabytes on disk and the kilobytes your users download is compression and smart architecture. With a few focused changes we achieved an extremely lightweight delivery (~12KB transferred) with excellent developer ergonomics.
+
+Want me to:
+
+- Produce an automated checklist and script to run the analyzer and report regressions?
+- Start migrating specific `use client` pages to Server Components (I can do an incremental PR)?
+
+Which would you like next?
