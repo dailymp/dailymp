@@ -9,43 +9,43 @@ export async function GET() {
   // Static pages
   const pages = [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 1,
     },
     {
-      url: `${baseUrl}/servicios/integracion-ia`,
+      url: `${baseUrl}/servicios/integracion-ia/`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/en/servicios/integracion-ia`,
+      url: `${baseUrl}/en/servicios/integracion-ia/`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/servicios/bug-shield`,
+      url: `${baseUrl}/servicios/bug-shield/`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/en/servicios/bug-shield`,
+      url: `${baseUrl}/en/servicios/bug-shield/`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/servicios/ai-driven-development`,
+      url: `${baseUrl}/servicios/ai-driven-development/`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/en/servicios/ai-driven-development`,
+      url: `${baseUrl}/en/servicios/ai-driven-development/`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
@@ -54,7 +54,7 @@ export async function GET() {
 
   // Blog posts (includes language variants like '-en')
   const posts = getAllBlogPosts().map((p) => ({
-    url: `${baseUrl}/blog/${p.slug}`,
+    url: `${baseUrl}/blog/${p.slug}/`,
     lastModified: new Date(p.date),
     changeFrequency: "monthly" as const,
     priority: 0.8,
@@ -97,7 +97,7 @@ export async function GET() {
       // If this page is a service page, add hreflang alternates for ES/EN
       if (page.url.includes(`${baseUrl}/servicios/`) || page.url.includes(`${baseUrl}/en/servicios/`)) {
         const isEn = page.url.includes(`${baseUrl}/en/servicios/`);
-        const esUrl = isEn ? page.url.replace(`${baseUrl}/en`, baseUrl) : page.url;
+        const esUrl = isEn ? page.url.replace(`${baseUrl}/en`, `${baseUrl}`) : page.url;
         const enUrl = isEn ? page.url : page.url.replace(`${baseUrl}`, `${baseUrl}/en`);
 
         const hreflang = `    <xhtml:link rel="alternate" hreflang="es" href="${esUrl}" />\n` +
