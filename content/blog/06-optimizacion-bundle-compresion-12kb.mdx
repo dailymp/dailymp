@@ -74,7 +74,7 @@ curl -I -H "Accept-Encoding: br, gzip" https://dailymp.es/ | grep -i content-enc
 - Hostinger sirve Brotli por defecto; al solicitar `Accept-Encoding: br` el navegador recibe archivos ya comprimidos. En nuestra comprobación real la página principal se transfiere en ~12KB.
 - La diferencia entre "tamaño de bundle" y "tamaño transferido" radica en la compresión y el hecho de que gran parte del trabajo se mueve al servidor/SSG.
 
-![Tamaño transferido ~12KB](/images/bundle-transfer.png "Transfer size ~12KB")
+![Tamaño transferido ~12KB](/images/bundle-transfer.svg "Transfer size ~12KB")
 
 ## Buenas prácticas para mantener el bundle pequeño
 
@@ -91,5 +91,6 @@ curl -I -H "Accept-Encoding: br, gzip" https://dailymp.es/ | grep -i content-enc
 ## Conclusión y llamada a la acción
 
 Reducir el tamaño del bundle no es solo reducir KB en disco: es tomar decisiones sobre arquitectura, delegar trabajo al servidor y configurar entrega (Brotli, CDN). En nuestro caso, la suma de pequeñas mejoras y una entrega estática optimizada permitió que la página se sirviera con apenas ~12KB transferidos, ofreciendo una experiencia de carga instantánea.
+¿Te interesa optimizar tu sitio o reducir el tamaño transferido? [Contáctanos](/#contact) — ofrecemos auditorías y mejoras prácticas para ayudarte a lograr resultados similares.
 
  

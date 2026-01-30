@@ -95,6 +95,8 @@ Informar al usuario que el artículo ha sido desplegado.
 
 El sistema de blog está diseñado para que **todo sea automático**. Al crear los archivos MDX correctamente, el artículo se integra automáticamente:
 
+- Llamada a la acción al final (CTA): debe incluir un enlace claro a la sección de contacto (`/#contact`) o a un servicio relevante.
+**IMPORTANTE (AUTOMATIZACIÓN DE CALIDAD)**: Antes de finalizar, el agente debe revisar el último párrafo del artículo y asegurarse de que NO contenga instrucciones para el modelo o notas para el autor (por ejemplo: "escribe esto", "no traduzcas literal", fragmentos de prompt, etc.). Si detecta texto que parezca instrucciones internas o placeholders, debe eliminarlas y reemplazarlas por un párrafo de cierre apropiado.
 ### Cards en el listado del blog
 - **NO hay que modificar ningún componente** para añadir la card del artículo
 - El componente `BlogGrid` en `app/components/BlogGrid.tsx` lee automáticamente todos los archivos de `content/blog/`
@@ -114,6 +116,8 @@ El sistema de blog está diseñado para que **todo sea automático**. Al crear l
 ```
 - El sufijo `-en` en el nombre del archivo indica la versión inglesa
 - El campo `lang` en el frontmatter DEBE coincidir: `"es"` o `"en"`
+**QUALITY STEP (AUTOMATED CHECK)**: The agent must ensure the final paragraph does not contain model instructions, prompts, or placeholders. Remove any such lines and replace with a natural closing paragraph.
+Also: include a clear CTA (e.g. `Need help? [Contact us](/#contact)`) at the end of the English article.
 - Ejemplo:
   - `04-testing-automatizado.mdx` con `lang: "es"` → `/blog/04-testing-automatizado`
   - `04-testing-automatizado-en.mdx` con `lang: "en"` → `/blog/04-testing-automatizado-en`
@@ -136,6 +140,8 @@ El sistema de blog está diseñado para que **todo sea automático**. Al crear l
 4. ✅ Usar la MISMA categoría en ambos (para filtros consistentes)
 5. ✅ Usar la MISMA fecha en ambos
 
+ - [ ] El párrafo final NO contiene instrucciones al modelo ni placeholders (el agente debe limpiar si los encuentra)
+ - [ ] El artículo incluye una llamada a la acción (CTA) clara al final: Español -> enlace a `/#contact` o servicio; Inglés -> `/#contact` or service link
 ### Lo que NO debe hacer el agente
 - ❌ Modificar `BlogGrid.tsx`
 - ❌ Modificar `lib/blog.ts`

@@ -62,7 +62,9 @@ curl -I -H "Accept-Encoding: br, gzip" https://dailymp.es/ | grep -i content-enc
 - Since we offload Markdown/MDX processing to the server and favor server rendering, the client receives a small, focused JS payload.
 - Hostinger serves Brotli, so the effective bytes over the wire are a fraction of the raw bundle.
 
-![Transfer size ~12KB](/images/bundle-transfer.png "Transfer size ~12KB")
+![Transfer size ~12KB](/images/bundle-transfer.svg "Transfer size ~12KB")
+
+Need help optimizing your app or reducing transfer sizes? [Contact us](/#contact) — we offer audits and practical improvements to achieve similar results.
 
 ## Practical checklist to keep sizes low
 
@@ -79,9 +81,3 @@ curl -I -H "Accept-Encoding: br, gzip" https://dailymp.es/ | grep -i content-enc
 ## Final thoughts
 
 The difference between megabytes on disk and the kilobytes your users download is compression and smart architecture. With a few focused changes we achieved an extremely lightweight delivery (~12KB transferred) with excellent developer ergonomics.
-
-Want me to:
-
-- Produce an automated checklist and script to run the analyzer and report regressions?
-- Start migrating specific `use client` pages to Server Components (I can do an incremental PR)?
-
