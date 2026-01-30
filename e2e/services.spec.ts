@@ -18,7 +18,8 @@ function dirSlugs(dir: string) {
 
 test.describe('Service pages', () => {
   test('service routes render and are reachable', async ({ request, baseURL }) => {
-    const base = baseURL.replace(/\/$/, '');
+    if (!baseURL) test.skip(true, 'baseURL not defined');
+    const base = baseURL!.replace(/\/$/, '');
 
     const esSlugs = dirSlugs(SERVICES_DIR);
     const enSlugs = dirSlugs(SERVICES_EN_DIR);

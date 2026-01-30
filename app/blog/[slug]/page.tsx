@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
-import BlogPostClientWrapper from "@/app/components/BlogPostClientWrapper";
 import { siteConfig } from "@/config/site";
 import StructuredDataForPost from "@/app/components/StructuredDataForPost";
 
@@ -16,9 +15,8 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 
 interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
+  searchParams?: any | Promise<any>;
 }
 
 export async function generateStaticParams() {

@@ -7,7 +7,8 @@ const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 
 test.describe('Sitemap and URL checks', () => {
   test('sitemap contains valid URLs and pages respond 200', async ({ request, baseURL }) => {
-    const sitemapUrl = `${baseURL.replace(/\/$/, '')}/sitemap.xml`;
+    if (!baseURL) test.skip(true, 'baseURL not defined');
+    const sitemapUrl = `${baseURL!.replace(/\/$/, '')}/sitemap.xml`;
     const res = await request.get(sitemapUrl);
     expect(res.status()).toBe(200);
     const text = await res.text();
@@ -38,7 +39,7 @@ test.describe('Sitemap and URL checks', () => {
 
     const localSlugs = files.map((f) => f.replace(/\.mdx$/, ''));
     for (const slug of localSlugs) {
-      const expected = `${baseURL.replace(/\/$/, '')}/blog/${slug}`;
+      const expected = `${baseURL!.replace(/\/$/, '')}/blog/${slug}`;
       expect(urls.includes(expected)).toBeTruthy();
     }
   });
