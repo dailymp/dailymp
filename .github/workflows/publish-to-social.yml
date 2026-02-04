@@ -62,45 +62,45 @@ jobs:
 
       - name: Preflight - validate frontmatter
         run: |
-          node -e "
-          const fs = require('fs');
+          node -e '
+          const fs = require("fs");
           const slug = process.env.POST_SLUG;
-          const file = `content/blog/${slug}.mdx`;
-          const content = fs.readFileSync(file, 'utf8');
+          const file = "content/blog/" + slug + ".mdx";
+          const content = fs.readFileSync(file, "utf8");
           const match = content.match(/^---\n([\s\S]+?)\n---/);
-          if (!match) { console.error('❌ Missing frontmatter'); process.exit(1); }
+          if (!match) { console.error("❌ Missing frontmatter"); process.exit(1); }
           const fm = {};
-          match[1].split('\n').forEach(line => {
-            const [key, ...rest] = line.split(':');
-            if (key && rest.length) fm[key.trim()] = rest.join(':').trim().replace(/^\"|\"$/g, '').replace(/^'|'$/g, '');
+          match[1].split("\n").forEach(line => {
+            const [key, ...rest] = line.split(":");
+            if (key && rest.length) fm[key.trim()] = rest.join(":").trim().replace(/^"|"$/g, "").replace(/^'|'$/g, "");
           });
-          const required = ['title','description','date','author','category','image','lang'];
+          const required = ["title","description","date","author","category","image","lang"];
           const missing = required.filter(k => !fm[k]);
-          if (missing.length) { console.error('❌ Missing frontmatter fields:', missing.join(', ')); process.exit(1); }
-          if (fm.title.length > 60) { console.error('❌ Title too long (>60 chars)'); process.exit(1); }
-          if (fm.description.length < 120 || fm.description.length > 160) { console.error('❌ Description length must be 120-160 chars'); process.exit(1); }
-          if (!/^https:\/\//.test(fm.image)) { console.error('❌ Image must be a valid https URL'); process.exit(1); }
-          if (fm.lang !== 'es' && fm.lang !== 'en') { console.error('❌ lang must be "es" or "en"'); process.exit(1); }
+          if (missing.length) { console.error("❌ Missing frontmatter fields:", missing.join(", ")); process.exit(1); }
+          if (fm.title.length > 60) { console.error("❌ Title too long (>60 chars)"); process.exit(1); }
+          if (fm.description.length < 120 || fm.description.length > 160) { console.error("❌ Description length must be 120-160 chars"); process.exit(1); }
+          if (!/^https:\/\//.test(fm.image)) { console.error("❌ Image must be a valid https URL"); process.exit(1); }
+          if (fm.lang !== "es" && fm.lang !== "en") { console.error("❌ lang must be \"es\" or \"en\""); process.exit(1); }
 
-          const isEnFile = slug.endsWith('-en');
-          if (isEnFile && fm.lang !== 'en') { console.error('❌ File name ends with -en but lang is not "en"'); process.exit(1); }
-          if (!isEnFile && fm.lang !== 'es') { console.error('❌ File name without -en must have lang "es"'); process.exit(1); }
+          const isEnFile = slug.endsWith("-en");
+          if (isEnFile && fm.lang !== "en") { console.error("❌ File name ends with -en but lang is not \"en\""); process.exit(1); }
+          if (!isEnFile && fm.lang !== "es") { console.error("❌ File name without -en must have lang \"es\""); process.exit(1); }
 
-          const baseSlug = isEnFile ? slug.replace(/-en$/, '') : slug;
-          const esFile = `content/blog/${baseSlug}.mdx`;
-          const enFile = `content/blog/${baseSlug}-en.mdx`;
+          const baseSlug = isEnFile ? slug.replace(/-en$/, "") : slug;
+          const esFile = "content/blog/" + baseSlug + ".mdx";
+          const enFile = "content/blog/" + baseSlug + "-en.mdx";
           if (!fs.existsSync(esFile) || !fs.existsSync(enFile)) {
-            console.error('❌ Missing language pair. Expected both:', esFile, 'and', enFile);
+            console.error("❌ Missing language pair. Expected both:", esFile, "and", enFile);
             process.exit(1);
           }
-          console.log('✓ Frontmatter validated');
-          "
+          console.log("✓ Frontmatter validated");
+          '
         env:
           POST_SLUG: ${{ needs.detect-new-post.outputs.post_slug }}
 
       - name: Preflight - validate image URL
         run: |
-          IMAGE_URL=$(node -e "const fs=require('fs');const slug=process.env.POST_SLUG;const c=fs.readFileSync(`content/blog/${slug}.mdx`,'utf8');const m=c.match(/^---\n([\s\S]+?)\n---/);const fm={};m[1].split('\n').forEach(l=>{const [k,...r]=l.split(':');if(k&&r.length)fm[k.trim()]=r.join(':').trim().replace(/^\"|\"$/g,'').replace(/^'|'$/g,'');});console.log(fm.image);")
+          IMAGE_URL=$(node -e 'const fs=require("fs");const slug=process.env.POST_SLUG;const c=fs.readFileSync("content/blog/"+slug+".mdx","utf8");const m=c.match(/^---\n([\s\S]+?)\n---/);const fm={};m[1].split("\n").forEach(l=>{const [k,...r]=l.split(":");if(k&&r.length)fm[k.trim()]=r.join(":").trim().replace(/^"|"$/g,"").replace(/^'"'"'|'"'"'$/g,"");});console.log(fm.image);')
           if [ -z "$IMAGE_URL" ]; then
             echo "❌ No image URL found"
             exit 1
@@ -111,6 +111,8 @@ jobs:
             exit 1
           fi
           echo "✓ Image URL reachable"
+        env:
+          POST_SLUG: ${{ needs.detect-new-post.outputs.post_slug }}
 
       - name: Preflight - validate required secrets
         run: |
