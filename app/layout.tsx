@@ -41,6 +41,9 @@ export const metadata: Metadata = {
       en: `${siteConfig.url}/en/`,
       'x-default': siteConfig.url,
     },
+    types: {
+      'application/rss+xml': `${siteConfig.url}/rss.xml`,
+    },
   },
   openGraph: {
     title: siteConfig.seo.title,
