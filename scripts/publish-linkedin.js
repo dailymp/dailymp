@@ -49,11 +49,12 @@ function getLinkedInUserId() {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.linkedin.com',
-      path: '/v2/userinfo',
+      path: '/v2/me',
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${ACCESS_TOKEN}`,
         'Content-Type': 'application/json',
+        'X-Restli-Protocol-Version': '2.0.0'
       }
     };
 
@@ -63,7 +64,7 @@ function getLinkedInUserId() {
       res.on('end', () => {
         if (res.statusCode === 200) {
           const user = JSON.parse(data);
-          resolve(user.sub);
+          resolve(user.id);
         } else {
           reject(new Error(`Failed to get user ID: ${res.statusCode} - ${data}`));
         }
