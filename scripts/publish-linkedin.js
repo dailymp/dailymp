@@ -12,6 +12,7 @@ const https = require('https');
 const SITE_URL = 'https://dailymp.es';
 const POST_SLUG = process.env.POST_SLUG;
 const ACCESS_TOKEN = process.env.LINKEDIN_ACCESS_TOKEN;
+const LINKEDIN_PERSON_ID = process.env.LINKEDIN_PERSON_ID;
 
 if (!POST_SLUG || !ACCESS_TOKEN) {
   console.error('❌ Missing required environment variables');
@@ -46,15 +47,19 @@ function getPostMetadata() {
 
 // Get LinkedIn User ID (Person URN)
 function getLinkedInUserId() {
+  // If LINKEDIN_PERSON_ID is set, skip the API call
+  if (LINKEDIN_PERSON_ID) {
+    console.log('✓ Using provided LINKEDIN_PERSON_ID');
+    return Promise.resolve(LINKEDIN_PERSON_ID);
+  }
+
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.linkedin.com',
-      path: '/v2/me',
+      path: '/v2/userinfo',
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-        'X-Restli-Protocol-Version': '2.0.0'
       }
     };
 
@@ -64,9 +69,9 @@ function getLinkedInUserId() {
       res.on('end', () => {
         if (res.statusCode === 200) {
           const user = JSON.parse(data);
-          resolve(user.id);
+          resolve(user.sub);
         } else {
-          reject(new Error(`Failed to get user ID: ${res.statusCode} - ${data}`));
+          reject(new Error(`Failed to get user ID: ${res.statusCode} - ${data}.\nTip: set LINKEDIN_PERSON_ID env var to skip this call.`));
         }
       });
     });

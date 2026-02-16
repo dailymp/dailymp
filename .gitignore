@@ -38,3 +38,7 @@ next-env.d.ts
 # test results and CI artifacts
 test-results/
 playwright-report/
+
+# linkedin session (contains auth cookies)
+linkedin-session.json
+linkedin-*.png
