@@ -1,0 +1,117 @@
+---
+title: "AI Portfolio Asistente: chat y job hunter"
+description: "Portfolio inteligente con RAG, chat en tiempo real y job hunter para monetizar tu perfil profesional."
+date: "2026-02-19"
+author: "Daily Miranda Pardo"
+category: "AI Integration"
+image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=600&fit=crop"
+keywords: ["AI Portfolio", "RAG", "Supabase", "Next.js", "React", "Vercel AI SDK", "job hunter", "pgvector", "Tailwind CSS"]
+lang: "es"
+---
+
+Construir un portfolio en 2026 ya no es solo publicar un PDF bonito. Si quieres vender tu perfil en serio, necesitas una base de conocimiento viva, un chat que responda preguntas sobre ti en tiempo real y un sistema que encuentre oportunidades por ti. Ese es el objetivo del proyecto **AI Portfolio**: un portfolio inteligente, conectado a tus fuentes reales y optimizado para convertir visitas en proyectos.
+
+En este artículo presento la arquitectura del proyecto, el stack técnico y las capacidades comerciales que lo convierten en un producto monetizable. Si eres freelance, consultor o equipo técnico con foco en ventas, este enfoque te ayuda a presentar tu valor con evidencia y actualización continua.
+
+## Arquitectura general: portfolio como producto vivo
+
+El núcleo del proyecto está construido con **Next.js 16 (App Router)**, **React 19** y **TypeScript**, con una UI moderna en **Tailwind CSS**. La idea es simple: tu portfolio deja de ser una lista estática de proyectos y se convierte en una plataforma inteligente.
+
+El flujo base del sistema es:
+
+- Ingestas: CVs, certificaciones, diplomas y documentos propios
+- Integraciones automáticas: GitHub + LinkedIn
+- Base de conocimiento unificada en Supabase con pgvector
+- Chat con streaming usando Google Gemini (gemini-2.5-flash)
+- Job Hunter proactivo que hace matching con oportunidades
+
+Este diseño permite que tu perfil esté actualizado en tiempo real y que cada visita pueda interactuar con tu experiencia de forma conversacional.
+
+## RAG + chat con streaming: vender tu perfil en tiempo real
+
+El chat es la pieza clave para convertir visitas en interés real. Se implementa con **Vercel AI SDK** y streaming, lo que permite respuestas rápidas y naturales. El modelo recibe contexto relevante desde la base de conocimiento (RAG) y responde con fuentes basadas en tus datos.
+
+Un ejemplo simplificado de endpoint con streaming:
+
+```typescript
+import { streamText } from 'ai';
+import { google } from '@ai-sdk/google';
+
+export async function POST(req: Request) {
+  const { prompt, context } = await req.json();
+
+  const result = await streamText({
+    model: google('gemini-2.5-flash'),
+    system: 'Responde como portfolio profesional.',
+    prompt: `${context}\n\nPregunta: ${prompt}`,
+  });
+
+  return result.toTextStreamResponse();
+}
+```
+
+El resultado no es un bot genérico. Es un asistente que conoce tus proyectos, tus skills y tu trayectoria, con capacidad para responder preguntas como:
+
+- "Que experiencia tienes en React 19?"
+- "Que proyectos has hecho con RAG y vectores?"
+- "Puedes mostrar ejemplos de integraciones con Supabase?"
+
+Esto convierte el portfolio en una experiencia de venta, no solo en una vitrina.
+
+## Base de conocimiento conectada a GitHub, LinkedIn y documentos
+
+El valor diferencial real llega cuando el contenido se alimenta solo. El sistema permite subir CVs y certificados, y además integra GitHub y LinkedIn para construir una base de conocimiento centralizada.
+
+- **GitHub**: se sincronizan repos, lenguajes, stars y descripciones
+- **LinkedIn**: se captura experiencia, skills y educación
+- **Documentos propios**: se procesan y se convierten a embeddings
+
+Los tokens de integración se guardan en `profile_data` y hay endpoints de sincronización para mantener todo actualizado. El RAG no solo busca texto, también prioriza fuentes con mayor relevancia y frescura.
+
+Ejemplo de consulta semántica en Supabase:
+
+```sql
+select * from match_documents(
+  query_embedding := $1,
+  match_threshold := 0.78,
+  match_count := 6
+);
+```
+
+Así, el chat puede responder con precisión y con contexto de tus propios datos, no con información genérica de internet.
+
+## Multi-usuario, seguridad y control total
+
+El proyecto usa **Supabase Auth** con RLS activado. Cada usuario tiene su propio espacio de datos y un trigger genera `profile_data` automáticamente al registrarse. Esto es clave para escalar a SaaS y monetizar por usuario.
+
+Beneficios directos:
+
+- Aislamiento total de datos por usuario
+- Control de permisos desde la base de datos
+- Seguridad consistente entre frontend y backend
+- Preparado para planes freemium o por suscripcion
+
+Si quieres vender esto a multiples usuarios, esta base es imprescindible.
+
+## Job Hunter: del portfolio a la captacion activa
+
+El gran diferencial comercial es el **Job Hunter**, un agente que no solo espera oportunidades, sino que las busca. Analiza tu perfil, hace match con trabajos o proyectos relevantes y sugiere candidaturas. Con tu aprobacion, puede generar cartas de presentacion y enviarlas automaticamente.
+
+Eso convierte tu portfolio en un motor de negocio:
+
+- Automatiza la prospeccion
+- Aumenta la velocidad de respuesta
+- Mejora la coherencia del mensaje
+- Reduce el tiempo de busqueda de clientes
+
+A nivel de producto, esto es monetizable como add-on premium, servicio mensual o paquete enterprise para equipos.
+
+## Testing y despliegue: calidad lista para escalar
+
+El sistema incluye **tests E2E con Playwright** para login, dashboard y OAuth. Esto asegura que los flujos criticos se mantengan estables. El despliegue en **Vercel** permite iterar rapido y publicar cambios con alta confiabilidad.
+
+Si necesitas acelerar el desarrollo con IA o integrar esta arquitectura en tu propio producto, puedes conocer nuestro servicio de [desarrollo impulsado por IA](/servicios/ai-driven-development) o la [integracion de IA en aplicaciones](/servicios/integracion-ia).
+
+## Conclusión
+
+AI Portfolio redefine el concepto de portfolio profesional: es una plataforma viva, conversacional y orientada a generar oportunidades. Si quieres convertir tu experiencia en ventas reales y automatizar la captacion, este enfoque es el siguiente paso natural. ¿Quieres crear un portfolio inteligente como este? [Contacta aqui](/#contact).

@@ -1,0 +1,119 @@
+---
+title: "AI Portfolio Assistant: RAG Chat + Job Hunter"
+description: "A live, monetizable portfolio with RAG, real-time chat, and a job hunter that matches you to opportunities."
+date: "2026-02-19"
+author: "Daily Miranda Pardo"
+category: "AI Integration"
+image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=600&fit=crop"
+keywords: ["AI Portfolio", "RAG", "Supabase", "Next.js", "React", "Vercel AI SDK", "job hunter", "pgvector", "Tailwind CSS"]
+lang: "en"
+---
+
+A modern portfolio in 2026 is not a static PDF or a list of screenshots. If you want to monetize your profile, you need a living knowledge base, a chat that answers questions about you in real time, and a system that proactively finds opportunities. That is exactly what **AI Portfolio** delivers: an intelligent, connected portfolio designed to convert visitors into clients.
+
+This article breaks down the architecture, the stack, and the commercial features that make the project market-ready for freelancers, consultants, and teams who want a portfolio that sells.
+
+## The core architecture: a portfolio as a live product
+
+The foundation is built with **Next.js 16 (App Router)**, **React 19**, and **TypeScript**, with a clean UI in **Tailwind CSS**. The key idea is to treat a portfolio like a product, not a brochure.
+
+The system flow looks like this:
+
+- Ingestion: CVs, certifications, diplomas, and proprietary documents
+- Automatic integrations: GitHub + LinkedIn
+- Unified knowledge base in Supabase with pgvector
+- Real-time chat using Google Gemini (gemini-2.5-flash)
+- A proactive Job Hunter that matches your profile to opportunities
+
+Each part reinforces the next. Your data stays fresh, your narrative stays consistent, and every visitor can explore your expertise through a conversational interface.
+
+## RAG + streaming chat: real-time sales enablement
+
+The chat experience is built with **Vercel AI SDK** and streaming responses, which makes the assistant feel immediate and fluid. Instead of generic answers, the model is grounded by your own documents and profile data through RAG.
+
+A simplified streaming endpoint:
+
+```typescript
+import { streamText } from 'ai';
+import { google } from '@ai-sdk/google';
+
+export async function POST(req: Request) {
+  const { prompt, context } = await req.json();
+
+  const result = await streamText({
+    model: google('gemini-2.5-flash'),
+    system: 'Answer as a professional portfolio assistant.',
+    prompt: `${context}\n\nQuestion: ${prompt}`,
+  });
+
+  return result.toTextStreamResponse();
+}
+```
+
+Now a recruiter or client can ask:
+
+- "What React 19 projects have you shipped?"
+- "Show me your experience with RAG and vector search."
+- "How have you used Supabase in production?"
+
+That interaction moves your portfolio from passive to persuasive.
+
+## Knowledge base powered by GitHub, LinkedIn, and documents
+
+The real value comes from automation. The system ingests your documents and connects to GitHub and LinkedIn, building a unified knowledge base that stays up to date.
+
+- **GitHub**: repositories, languages, stars, and descriptions
+- **LinkedIn**: roles, skills, and education
+- **Personal documents**: CVs, certifications, and custom materials
+
+Integration tokens are stored inside `profile_data`, and sync endpoints keep everything current. The RAG layer does more than search text; it prioritizes the most recent, most relevant sources.
+
+Example semantic query in Supabase:
+
+```sql
+select * from match_documents(
+  query_embedding := $1,
+  match_threshold := 0.78,
+  match_count := 6
+);
+```
+
+That is how the chat can respond with high precision using your own data, not generic internet content.
+
+## Multi-user, security, and SaaS readiness
+
+The project runs on **Supabase Auth** with RLS enabled. Each user gets a private data space, and a trigger automatically creates `profile_data` on signup. This is essential if you want to monetize at scale.
+
+Why it matters:
+
+- Clean data isolation per user
+- Permission control at the database layer
+- Secure backend logic with minimal overhead
+- Ready for freemium or subscription plans
+
+If your goal is a portfolio platform, this foundation is critical.
+
+## Job Hunter: from portfolio to active acquisition
+
+The standout commercial feature is the **Job Hunter**. Instead of waiting for leads, it scans for opportunities, matches them to your profile, and suggests targeted applications. With approval, it can draft cover letters and send them for you.
+
+That transforms the portfolio into a revenue engine:
+
+- Automates prospecting
+- Speeds up response time
+- Keeps messaging consistent
+- Reduces the effort of finding clients
+
+From a business perspective, this is a premium add-on, a monthly service, or a B2B package for teams.
+
+## Testing and deployment: built for reliability
+
+The project includes **Playwright E2E tests** for login, dashboard, and OAuth flows. Deployment on **Vercel** keeps iteration fast and stable, which is essential when productizing a portfolio platform.
+
+To monetize effectively, the platform can bundle analytics, premium templates, and priority lead matching into higher tiers. That gives users a clear upgrade path while keeping the core portfolio free or low cost, and it aligns pricing with measurable outcomes.
+
+If you want to build something similar or integrate this architecture into your product, explore our [AI-driven development](/en/servicios/ai-driven-development) or [AI integration services](/en/servicios/integracion-ia).
+
+## Conclusion
+
+AI Portfolio turns professional experience into a live, conversational product that generates opportunities. It is designed to monetize your profile, keep your knowledge base updated, and help you win clients faster. Need help building a portfolio like this? [Contact us](/#contact).
