@@ -3,6 +3,7 @@
 import { useLanguage } from "@/app/context/LanguageContext";
 import { siteConfig } from "@/config/site";
 import { Testimonials } from "./Testimonials";
+import { ContactForm } from "./ContactForm";
 
 export function HomePage() {
   const { t, language } = useLanguage();
@@ -491,16 +492,11 @@ export function HomePage() {
             </a>
           </div>
           <div className="p-8 rounded-xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-purple-800/50">
-            <h3 className="text-2xl font-bold mb-4">{t("readyGetStarted")}</h3>
-            <p className="text-gray-300 mb-6">
+            <h3 className="text-2xl font-bold mb-6">{t("readyGetStarted")}</h3>
+            <p className="text-gray-300 mb-8">
               {t("readyGetStartedDesc")}
             </p>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="inline-block px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-all hover:scale-105"
-            >
-              {t("sendMessage")}
-            </a>
+            <ContactForm />
           </div>
         </div>
       </section>
